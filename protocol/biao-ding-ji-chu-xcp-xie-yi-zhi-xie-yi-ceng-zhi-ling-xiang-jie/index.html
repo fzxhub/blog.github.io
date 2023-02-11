@@ -1,0 +1,2031 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="标定基础-XCP协议之协议层指令详解, fzxhub blog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>标定基础-XCP协议之协议层指令详解 | fzxhub blog</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.svg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">fzxhub blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+
+      
+      <span>分类</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories/website">
+          
+          <span>网站建设</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/project">
+          
+          <span>项目开发</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/gui">
+          
+          <span>界面设计</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/mcu">
+          
+          <span>微控制器</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/tools">
+          
+          <span>工具使用</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/protocol">
+          
+          <span>协议详解</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+
+      
+      <span>归档</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="far fa-calendar-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>日历归档</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="far fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="far fa-address-card" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于博主</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-link" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友情链接</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.svg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">fzxhub blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+				<i class="fas fa-fw fa-link"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fas fa-fw fa-link"></i>
+			
+			分类
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/categories/website " style="margin-left:75px">
+				  
+		          <span>网站建设</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/project " style="margin-left:75px">
+				  
+		          <span>项目开发</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/gui " style="margin-left:75px">
+				  
+		          <span>界面设计</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/mcu " style="margin-left:75px">
+				  
+		          <span>微控制器</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/tools " style="margin-left:75px">
+				  
+		          <span>工具使用</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/protocol " style="margin-left:75px">
+				  
+		          <span>协议详解</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fas fa-fw fa-link"></i>
+			
+			归档
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa far fa-calendar-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>日历归档</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa far fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fas fa-fw fa-link"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa far fa-address-card" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于博主</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/friends " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-link" style="position: absolute;left:50px" ></i>
+			      
+		          <span>友情链接</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/fzxhub" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/fzxhub" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/image/xcpcmd/CONNECT.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">标定基础-XCP协议之协议层指令详解</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/XCP/">
+                                <span class="chip bg-color">XCP</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A0%87%E5%AE%9A/">
+                                <span class="chip bg-color">标定</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%B1%BD%E8%BD%A6%E6%8E%A7%E5%88%B6%E5%99%A8/">
+                                <span class="chip bg-color">汽车控制器</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/protocol/" class="post-category">
+                                protocol
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-01-03
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-01-03
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    8.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    34 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="标准-STD-指令"><a href="#标准-STD-指令" class="headerlink" title="标准(STD)指令"></a>标准(STD)指令</h2><h3 id="必实现指令"><a href="#必实现指令" class="headerlink" title="必实现指令"></a>必实现指令</h3><h4 id="0xFF-CONNECT"><a href="#0xFF-CONNECT" class="headerlink" title="0xFF:CONNECT"></a>0xFF:CONNECT</h4><p><img src="/image/xcpcmd/CONNECT.png" alt="CONNECT"></p>
+<p>该命令与从设备建立一个连续的、逻辑的、点到点的连接设备。在运行XCP会话期间(已连接)，此命令对任何XCP会话不没有影响任何XCP从设备的配置。<br>从设备在非连接状态时不响应任何其他命令(除了自动检测)。</p>
+<p>Mode参数：</p>
+<ul>
+<li>Mode = 0x00(Normal) 主机可以与从设备启动XCP通信。</li>
+<li>Mode = 0x01(user defined) 主机可以启动XCP通信同时告诉从机它应该进入一个特殊的(用户定义的)模式。</li>
+</ul>
+<p>RESSOURCE参数：</p>
+<ul>
+<li>CAL/PAG、DAQ、STIM、PGM = 1 表示该资源可用，反之不可用。</li>
+</ul>
+<p>COMM_MODE参数：</p>
+<ul>
+<li><p>ADDRESS_GRANULARITY_1、ADDRESS_GRANULARITY_0：</p>
+<ul>
+<li>00： ADDRESS_GRANULARITY=BYTE    AG=1</li>
+<li>01： ADDRESS_GRANULARITY=WORE    AG=2</li>
+<li>10： ADDRESS_GRANULARITY=DWORD    AG=4</li>
+<li>11： ADDRESS_GRANULARITY=保留       AG=保留</li>
+</ul>
+</li>
+<li><p>SLAVE_BLOCK_MODE参数：</p>
+<ul>
+<li>1：表示从机块模式可用</li>
+<li>0：表示从机块模式不可用</li>
+</ul>
+</li>
+<li><p>OPTIONAL参数：</p>
+<ul>
+<li>1：表示支持类型的附加信息的通信模式</li>
+<li>0：表示不支持类型的附加信息的通信模式</li>
+</ul>
+</li>
+</ul>
+<p>MAX_CTO参数：</p>
+<ul>
+<li>最大CTO大小，单位为字节。</li>
+</ul>
+<p>MAX_DTO参数：</p>
+<ul>
+<li>最大DTO大小，单位为字节。</li>
+</ul>
+<blockquote>
+<p>注意：MAX_CTO、MAX_CTO必须始终满足下列关系：<br>MAX_CTO mod AG = 0<br>MAX_DTO mod AG = 0<br>所有涉及从设备地址范围的长度信息都基于AG(元素)。<br>如果长度信息指的是数据流(XCP协议)，则它是基于字节。</p>
+</blockquote>
+<h4 id="0xFE-DISCONNECT"><a href="#0xFE-DISCONNECT" class="headerlink" title="0xFE:DISCONNECT"></a>0xFE:DISCONNECT</h4><p><img src="/image/xcpcmd/DISCONNECT.png" alt="DISCONNECT"></p>
+<h4 id="0xFD-GET-STATUS"><a href="#0xFD-GET-STATUS" class="headerlink" title="0xFD:GET_STATUS"></a>0xFD:GET_STATUS</h4><p><img src="/image/xcpcmd/GET_STATUS.png" alt="GET_STATUS"></p>
+<p>Session参数：</p>
+<ul>
+<li>STORE_CAL_REQ：STORE_CAL_REQ = 1标志表示保存校准数据到非易失性内存的挂起请求。一旦请求被满足，从设备将重置该位。从设备可以通过传输EV_STORE_CAL来指示。</li>
+<li>STORE_DAQ_REQ：STORE_DAQ_REQ = 1标志表示保存DAQ列表设置到非易失性内存的挂起请求。一旦请求被满足，从设备将重置该位。从设备可以通过传输EV_STORE_DAQ来指示。</li>
+<li>CLEAR_DAQ_REQ：CLEAR_DAQ_REQ = 1标志表示清除所有非易失中DAQ列表的挂起请求。所有ODT表项重置为address = 0, extension = 0, size = 0, bit_offset = FF。会话配置ID重置为0。一旦请求得到满足，从设备将重置该位。从设备可以通过发送信号EV_CLEAR_DAQ来指示。<br>如果从设备不支持所请求的模式，返回ERR_OUT_OF_RANGE。</li>
+<li>DAQ_RUNNING=1：表示至少有一个DAQ列表已经启动并处于状态运行模式。</li>
+<li>RESUME=1：表示从机处于RESUME模式。</li>
+</ul>
+<p>Protection参数：</p>
+<ul>
+<li>CAL/PAG：CAL/PAG = 1 表示该资源受保护需要解锁才能使用。</li>
+<li>DAQ：DAQ = 1 表示该资源受保护需要解锁才能使用。</li>
+<li>STIM：STIM = 1 表示该资源受保护需要解锁才能使用。</li>
+<li>PGM：PGM = 1 表示该资源受保护需要解锁才能使用。</li>
+</ul>
+<blockquote>
+<p>标准命令永远不会被保护</p>
+</blockquote>
+<h4 id="0xFC-SYNCH"><a href="#0xFC-SYNCH" class="headerlink" title="0xFC:SYNCH"></a>0xFC:SYNCH</h4><p><img src="/image/xcpcmd/SYNCH.png" alt="SYNCH"></p>
+<p>该命令用于同步超时后的命令执行，SYNCH命令将始终有一个带有错误代码的否定响应ERR_CMD_SYNCH。没有其他命令使用此错误代码。</p>
+<h3 id="可选实现指令"><a href="#可选实现指令" class="headerlink" title="可选实现指令"></a>可选实现指令</h3><h4 id="0xFB-GET-COMM-MODE-INFO"><a href="#0xFB-GET-COMM-MODE-INFO" class="headerlink" title="0xFB:GET_COMM_MODE_INFO"></a>0xFB:GET_COMM_MODE_INFO</h4><p><img src="/image/xcpcmd/GET_COMM_MODE_INFO.png" alt="GET_COMM_MODE_INFO"></p>
+<p>COMM_MODE参数：</p>
+<ul>
+<li><p>MASTER_BLOCK_MODE参数：表示主设备的块模式是否可用。如果支持主设备块模式：</p>
+<ul>
+<li>则MAX_BS为允许的最大块大小作为连续命令包的数量(DOWNLOAD_NEXT或PROGRAM_NEXT)。</li>
+<li>MIN_ST所需的最小值，是一个块的数据包从主设备传输到从设备的分离时间，单位为100微秒。</li>
+</ul>
+</li>
+<li><p>INTERLEAVED_MODE参数：表示交错模式是否可用。如果存在交错模式：</p>
+<ul>
+<li>QUEUE_SIZE为最大数目。主站可以向从站的接收队列发送连续的命令包。</li>
+</ul>
+</li>
+</ul>
+<h4 id="0xFA-GET-ID"><a href="#0xFA-GET-ID" class="headerlink" title="0xFA:GET_ID"></a>0xFA:GET_ID</h4><p><img src="/image/xcpcmd/GET_ID.png" alt="GET_ID"></p>
+<p>Type参数：</p>
+<ul>
+<li>0：ASCII文本</li>
+<li>1：ASAM-MC2文件名，没有路径和扩展</li>
+<li>2：ASAM-MC2文件名，有路径和扩展</li>
+<li>3：ASAM-MC2文件所在的URL路径</li>
+<li>4：ASAM-MC2文件上传</li>
+<li>128-255：自定义</li>
+</ul>
+<p>Length参数：</p>
+<ul>
+<li>指定标识中的字节数。如果length为0，则请求的标识类型不可用。</li>
+<li>数据元素是BYTE, WORD或DWORD，取决于AG。</li>
+<li>Mode=0时，从设备将MTA (Memory Transfer Address)设置为当前地址。主设备可以使用一个或多个UPLOAD命令。</li>
+<li>标识字符串是ASCII文本格式，它没有0结尾。</li>
+</ul>
+<h4 id="0xF9-SET-REQUEST"><a href="#0xF9-SET-REQUEST" class="headerlink" title="0xF9:SET_REQUEST"></a>0xF9:SET_REQUEST</h4><p><img src="/image/xcpcmd/SET_REQUEST.png" alt="SET_REQUEST"></p>
+<p>Mode参数：</p>
+<ul>
+<li>STORE_CAL_REQ：标记了将校准数据保存到非易失性内存中的请求。可以通过GET_STATUS获取的STORE_CAL_REQ位，该位将被从机重置当请求已完成。从设备可以通过传输EV_STORE_CAL来指示传输。</li>
+<li>STORE_DAQ_REQ：标记了一个保存所有DAQ列表的请求。目标是START_STOP_DAQ_LIST指令选择的非易失性内存。从设备还必须存储非易失性内存中的会话配置id。在保存时，从设备首先必须清除可能已经存在的任何DAQ列表配置。可以通过GET_STATUS获得的STORE_DAQ_REQ位，该位将被从机重置当请求已完成。从设备可以通过传输EV_STORE_DAQ来指示传输。</li>
+<li>CLEAR_DAQ_REQ用于清除非易失性内存中的所有DAQ列表。所有ODT条目reset address = 0, extension = 0, size = 0, bit_offset = FF，会话配置ID重置为0。通过GET_STATUS获得的CLEAR_DAQ_REQ位，该位将被从机重置当请求已完成。从设备可以通过传输EV_CLEAR_DAQ来指示。<blockquote>
+<p>如果从设备不支持所请求的模式，则返回ERR_OUT_OF_RANGE。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="0xF8-GET-SEED"><a href="#0xF8-GET-SEED" class="headerlink" title="0xF8:GET_SEED"></a>0xF8:GET_SEED</h4><p><img src="/image/xcpcmd/GET_SEED.png" alt="GET_SEED"></p>
+<p>Mode参数：</p>
+<ul>
+<li>Mode=0：第一部分种子获取</li>
+<li>Mode=1：剩余种子获取</li>
+</ul>
+<p>Resource参数：</p>
+<ul>
+<li>Mode=0：Resource=需要解锁的资源</li>
+<li>Mode=1：Resource不关心</li>
+</ul>
+<p>Length参数：</p>
+<ul>
+<li>Mode=0：Length=主设备请求种子总长度。</li>
+<li>Mode=1：Length=主设备请求种子剩余长度。(Length大于MAX_CTO-2是才使用该模式)</li>
+</ul>
+<blockquote>
+<p>主设备必须在定义的顺序中使用GET_SEED(Mode=1)和GET_SEED(Mode= 0)。<br>如果主设备直接发送GET_SEED(Mode=1)，而不在之前使用GET_SEED(Mode=0)，从服务器返回一个ERR_SEQUENCE为负响应。</p>
+</blockquote>
+<p>Resource参数：</p>
+<ul>
+<li>请参阅GET_STATUS(资源保护状态)命令。</li>
+</ul>
+<blockquote>
+<p>一个GET_SEED命令只能请求一个资源。如果不止一个资源必须被解锁，(GET_SEED+UNLOCK)序列必须执行多次。主服务器不请求任何资源或请求多个资源，从机将响应ERR_OUT_OF_RANGE。</p>
+</blockquote>
+<h4 id="0xF7-UNLOCK"><a href="#0xF7-UNLOCK" class="headerlink" title="0xF7:UNLOCK"></a>0xF7:UNLOCK</h4><p><img src="/image/xcpcmd/UNLOCK.png" alt="UNLOCK"></p>
+<p>使用种子算的密钥来解锁从机的安全保护。种子由之前的GET_SEED序列获得。<br>Length参数：</p>
+<ul>
+<li>表示剩余密钥字节数。</li>
+<li>主机必须在定义的序列中使用UNLOCK和GET_SEED。如果之前只有一个GET_SEED，主服务器只能发送一个UNLOCK序列。</li>
+<li>如果密钥的总长度大于MAX_CTO-2，主服务器必须发送剩余的密钥字节，连续的UNLOCK命令包含剩余的键的长度。</li>
+</ul>
+<blockquote>
+<p>如果主服务器不尊重这个序列，从服务器返回ERR_SEQUENCE为负响应。<br>完成UNLOCK序列后检查密钥。如果钥匙不被接受，将返回ERR_ACCESS_LOCKED。从设备将转到断开连接状态。使用正确的密钥重复UNLOCK序列将会有一个积极的响应，没有其他影响。</p>
+</blockquote>
+<p>Example:<br>MAX_CTO = 8 bytes (CAN)<br>Seed = 11 22 33 44<br>TotalLengthOf(seed) = 4 bytes<br>Key = 43 21<br>TotalLengthOf(key) = 2 bytes </p>
+<img src="/image/xcpcmd/UNLOCK_Example.png" alt="解锁例子" style="zoom:50%;" />
+
+<p>MAX_CTO = 8 bytes (CAN)<br>Seed = 99 88 77 66 55 44 33 22 11 00 11 22 33 44 55 66 77 88 99<br>TotalLengthOf(seed) = 19 bytes<br>Key = 98 76 54 32 10 01 23 45 67 89<br>TotalLengthOf(key) = 10 bytes </p>
+<img src="/image/xcpcmd/UNLOCK_Example2.png" alt="解锁例子" style="zoom:50%;" />
+
+<h4 id="0xF6-SET-MTA"><a href="#0xF6-SET-MTA" class="headerlink" title="0xF6:SET_MTA"></a>0xF6:SET_MTA</h4><p><img src="/image/xcpcmd/SET_MTA.png" alt="SET_MTA"></p>
+<p>这个命令将内存初始化一个指针(32位地址+ 8位扩展)转移指令。</p>
+<blockquote>
+<p>MTA用于命令BUILD_CHECKSUM, UPLOAD, DOWNLOAD，DOWNLOAD_MAX, MODIFY_BITS, PROGRAM_CLEAR，PROGRAM和PROGRAM_MAX。</p>
+</blockquote>
+<h4 id="0xF5-UPLOAD"><a href="#0xF5-UPLOAD" class="headerlink" title="0xF5:UPLOAD"></a>0xF5:UPLOAD</h4><p><img src="/image/xcpcmd/UPLOAD.png" alt="UPLOAD"></p>
+<p>从当前MTA开始，将返回指定长度的数据块。MTA将按给定的数据元素数量后递增。</p>
+<ul>
+<li>根据AG的不同，必须使用1、2或3个对齐字节来满足对齐要求。</li>
+<li>元素是BYTE、WORD或DWORD，取决于AG。</li>
+</ul>
+<p>如果从机不支持块传输模式</p>
+<ul>
+<li>则所有上传的数据都以单个响应包方式传输，因此请求中的数据元素数量参数必须在[1..MAX_CTO-1]范围内。</li>
+<li>如果数据元素个数大于MAX_CTO-1，返回ERR_OUT_OF_RANGE。</li>
+</ul>
+<p>如果支持块传输方式，</p>
+<ul>
+<li>则上传的数据在多个响应中传输在同一个请求包上。</li>
+<li>对于master，不允许有任何限制最大块大小。因此数据元素的数量(n)可以在此范围内(1 . . 255)</li>
+<li>从设备将发送(n*AG / (MAX_CTO-1)) +1个响应报文。响应包之间的分离时间取决于从设备实现。</li>
+</ul>
+<p>Examples:<br>MAX_CTO=8<br>AG=1 </p>
+<img src="/image/xcpcmd/UPLOAD_Examples.png" alt="UPLOAD_Examples" style="zoom:50%;" />
+
+
+<h4 id="0xF4-SHORT-UPLOAD"><a href="#0xF4-SHORT-UPLOAD" class="headerlink" title="0xF4:SHORT_UPLOAD"></a>0xF4:SHORT_UPLOAD</h4><p><img src="/image/xcpcmd/SHORT_UPLOAD.png" alt="SHORT_UPLOAD"></p>
+<p>将返回指定长度的数据块，从Address开始。MTA指针为设置为上传数据块后面的第一个数据字节。错误处理和响应结构与UPLOAD命令相同。</p>
+<blockquote>
+<p>元素是字节。WORD或DWORD，取决于AG。<br>此命令不支持块传输，且不能在块传输序列中使用。</p>
+</blockquote>
+<h4 id="0xF3-BUILD-CHECKSUM"><a href="#0xF3-BUILD-CHECKSUM" class="headerlink" title="0xF3:BUILD_CHECKSUM"></a>0xF3:BUILD_CHECKSUM</h4><p><img src="/image/xcpcmd/BUILD_CHECKSUM.png" alt="BUILD_CHECKSUM"></p>
+<p>返回由MTA和定义的内存块大小的计算校验和结果。MTA将按大小后增量。</p>
+<p>Type参数：</p>
+<ul>
+<li>0x01:  XCP_ADD_11 将BYTE添加到BYTE校验和中，忽略溢出</li>
+<li>0x02:  XCP_ADD_12 将BYTE添加到WORD校验和中，忽略溢出</li>
+<li>0x03:  XCP_ADD_14 将BYTE添加到DWORD校验和中，忽略溢出</li>
+<li>0x04:  XCP_ADD_22 将WORD添加到WORD校验和中，忽略溢出，块大小必须对2取模</li>
+<li>0x05:  XCP_ADD_24 将WORD添加到DWORD校验和中，忽略溢出，块大小必须对2取模</li>
+<li>0x06:  XCP_ADD_44 将DWORD添加到DWORD校验和中，忽略溢出，块大小必须对4取模</li>
+<li>0x07:  XCP_CRC_16  参见CRC错误检测算法</li>
+<li>0x08:  XCP_CRC_16_CITT 参见CRC错误检测算法</li>
+<li>0x09:  XCP_CRC_32 参见CRC错误检测算法</li>
+<li>0xFF:  XCP_USER_DEFINED 用户自定义算法，在外部计算函数</li>
+</ul>
+<blockquote>
+<p>不管校验和类型是什么，结果总是以DWORD形式给出。<br>使用校验和类型XCP_USER_DEFINED时，从设备可以指示主设备为了计算校验和，必须使用在外部计算函数(例如win32 DLL, UNIX共享目标文件)，对象获取的名称在此从机的外部函数文件中。</p>
+</blockquote>
+<p>如果块大小超过允许的最大值，则返回ERR_OUT_OF_RANGE。最大块大小将在校验和字段中返回。</p>
+<p>CRC算法：</p>
+<p><img src="/image/xcpcmd/CRC.png" alt="CRC"></p>
+<h4 id="0xF2-TRANSPORT-LAYER-CMD"><a href="#0xF2-TRANSPORT-LAYER-CMD" class="headerlink" title="0xF2:TRANSPORT_LAYER_CMD"></a>0xF2:TRANSPORT_LAYER_CMD</h4><p><img src="/image/xcpcmd/TRANSPORT_LAYER_CMD.png" alt="TRANSPORT_LAYER_CMD"></p>
+<p>该命令在传输层规范中定义。它用于执行传输层特定的动作。</p>
+<h4 id="0xF1-USER-CMD"><a href="#0xF1-USER-CMD" class="headerlink" title="0xF1:USER_CMD"></a>0xF1:USER_CMD</h4><p><img src="/image/xcpcmd/USER_CMD.png" alt="USER_CMD"></p>
+<p>该命令由用户自定义。它不是必须被用来实现其他功能服务。</p>
+<h2 id="标定-CAL-指令"><a href="#标定-CAL-指令" class="headerlink" title="标定(CAL)指令"></a>标定(CAL)指令</h2><h3 id="必实现指令-1"><a href="#必实现指令-1" class="headerlink" title="必实现指令"></a>必实现指令</h3><h4 id="0xF0-DOWNLOAD"><a href="#0xF0-DOWNLOAD" class="headerlink" title="0xF0:DOWNLOAD"></a>0xF0:DOWNLOAD</h4><p><img src="/image/xcpcmd/DOWNLOAD.png" alt="DOWNLOAD"></p>
+<blockquote>
+<p>如果AG = DWORD，则必须使用2个对齐字节以满足对齐要求。<br>元素是BYTE，WORD或DWORD取决于AG。</p>
+</blockquote>
+<p>CMD中包含的指定长度(大小)的数据块从MTA开始将被复制到内存，MTA将按数据数量后增加。</p>
+<p>如果从机不支持块传输模式</p>
+<ul>
+<li>则下载的所有数据都是单个命令包中传输。因此，数据元素的数量参数请求中的值必须在[1..MAX_CTO-2]范围内。如果数据元素个数大于MAX_CTO-2，则返回ERR_OUT_OF_RANGE。</li>
+</ul>
+<p>如果从机支持块传输模式</p>
+<ul>
+<li>则下载的数据将分多个传输命令数据包。对于从设备，可能存在关于最大连续命令包(MAX_BS)。因此数据元素个数(n)的取值范围为[1..min(MAX_BS*(MAX_CTO-2)/AG,255)]。主设备必须连续传输(n * AG / (MAX_CTO-2)) - 1个DOWNLOAD_NEXT命令包。从设备将只回复最后DOWNLOAD_NEXT命令包。命令包之间的分离时间在CONNECT的响应中指定最大数据包数(MAX_BS, MIN_ST)。</li>
+</ul>
+<p>Example:<br>MAX_CTO=8</p>
+<img src="/image/xcpcmd/DOWNLOAD_Example.png" alt="DOWNLOAD_Example" style="zoom:50%;" />
+
+<h3 id="可选实现指令-1"><a href="#可选实现指令-1" class="headerlink" title="可选实现指令"></a>可选实现指令</h3><h4 id="0xEF-DOWNLOAD-NEXT"><a href="#0xEF-DOWNLOAD-NEXT" class="headerlink" title="0xEF:DOWNLOAD_NEXT"></a>0xEF:DOWNLOAD_NEXT</h4><p><img src="/image/xcpcmd/DOWNLOAD_NEXT.png" alt="DOWNLOAD_NEXT"></p>
+<blockquote>
+<p>如果AG = DWORD，则必须使用2个对齐字节以满足对齐要求。<br>元素是BYTE，WORD或DWORD取决于AG。</p>
+</blockquote>
+<ul>
+<li>该命令用于为DOWNLOAD传输连续的数据元素命令。</li>
+<li>DOWNLOAD_NEXT命令的结构与DOWNLOAD完全相同命令。</li>
+<li>Number包含要传输的剩余数量的数据元素。</li>
+<li>从设备将使用此信息检测丢失的数据包。如果检测到序列错误，则将返回错误代码ERR_SEQUENCE。</li>
+<li>如果数据元素的数量与期望值不匹配，则错误将返回ERR_SEQUENCE。回应将包含预期的数据元素数量。</li>
+</ul>
+<p>Example:<br>MAX_CTO=8 </p>
+<img src="/image/xcpcmd/DOWNLOAD_NEXT_Example.png" alt="DOWNLOAD_NEXT_Example" style="zoom:50%;" />
+
+<h4 id="0xEE-DOWNLOAD-MAX"><a href="#0xEE-DOWNLOAD-MAX" class="headerlink" title="0xEE:DOWNLOAD_MAX"></a>0xEE:DOWNLOAD_MAX</h4><p><img src="/image/xcpcmd/DOWNLOAD_MAX.png" alt="DOWNLOAD_MAX"></p>
+<blockquote>
+<p>如果AG = WORD/DWORD，则必须使用1/3个对齐字节以满足对齐要求。<br>元素是BYTE，WORD或DWORD取决于AG。<br>此命令不支持块传输，并且不能块传输序列中使用。</p>
+</blockquote>
+<p>将被下载数据到内存中，从MTA开始。MTA将增加MAX_CTO / AG-1。</p>
+<h4 id="0xED-SHORT-DOWNLOAD"><a href="#0xED-SHORT-DOWNLOAD" class="headerlink" title="0xED:SHORT_DOWNLOAD"></a>0xED:SHORT_DOWNLOAD</h4><p><img src="/image/xcpcmd/SHORT_DOWNLOAD.png" alt="SHORT_DOWNLOAD"></p>
+<blockquote>
+<p>元素是BYTE，WORD或DWORD取决于AG。<br>此命令不支持块传输，并且不能块传输序列中使用。<br>该命令将没有效果(没有数据字节可以传输)，如果MAX_CTO = 8</p>
+</blockquote>
+<p>从Address开始写入指定长度的数据块。MTA指针设置为第一个数据元素。如果是元素个数超过(MAX_CTO-8)/AG，则返回错误码ERR_OUT_OF_RANGE。</p>
+<h4 id="0xEC-MODIFY-BITS"><a href="#0xEC-MODIFY-BITS" class="headerlink" title="0xEC:MODIFY_BITS"></a>0xEC:MODIFY_BITS</h4><p><img src="/image/xcpcmd/MODIFY_BITS.png" alt="MODIFY_BITS"></p>
+<p>A = ( (A) &amp; ((<del>((dword)(((word)</del>MA)&lt;&lt;S))) )^((dword)(MX&lt;&lt;S)) ) </p>
+<blockquote>
+<p>MTA不会受到影响。</p>
+</blockquote>
+<p>Example:<br><img src="/image/xcpcmd/MODIFY_BITS_Example.png" alt="MODIFY_BITS_Example" style="zoom:50%;" /></p>
+<h2 id="页面切换-PAG-指令"><a href="#页面切换-PAG-指令" class="headerlink" title="页面切换(PAG)指令"></a>页面切换(PAG)指令</h2><h3 id="必实现指令-2"><a href="#必实现指令-2" class="headerlink" title="必实现指令"></a>必实现指令</h3><h4 id="0xEB-SET-CAL-PAGE"><a href="#0xEB-SET-CAL-PAGE" class="headerlink" title="0xEB:SET_CAL_PAGE"></a>0xEB:SET_CAL_PAGE</h4><p><img src="/image/xcpcmd/SET_CAL_PAGE.png" alt="SET_CAL_PAGE"></p>
+<p>Mode参数：</p>
+<ul>
+<li>ECU：给定的页面将使用从机的设备应用。</li>
+<li>XCP：从设备XCP驱动将访问给定的页面。</li>
+<li>ALL：逻辑段号被忽略。该命令适用于所有段。</li>
+<li>ECU和XCP标志可以同时设置，也可以单独设置。</li>
+<li>如果校准数据页不能设置为给定的模式，则返回ERR_MODE_NOT_VALID。</li>
+<li>如果校准数据页不可用，则返回ERR_PAGE_NOT_VALID或ERR_SEGMENT_NOT_VALID。</li>
+</ul>
+<h4 id="0xEA-GET-CAL-PAGE"><a href="#0xEA-GET-CAL-PAGE" class="headerlink" title="0xEA:GET_CAL_PAGE"></a>0xEA:GET_CAL_PAGE</h4><p><img src="/image/xcpcmd/GET_CAL_PAGE.png" alt="GET_CAL_PAGE"></p>
+<p>此命令返回当前激活的逻辑编号指定的访问模式的数据段的校准数据页。模式可以是0x01 (ECU)或0x02 (XCP)。所有其他值无效。</p>
+<h3 id="可选实现指令-2"><a href="#可选实现指令-2" class="headerlink" title="可选实现指令"></a>可选实现指令</h3><h4 id="0xE9-GET-PAG-PROCESSOR-INFO"><a href="#0xE9-GET-PAG-PROCESSOR-INFO" class="headerlink" title="0xE9:GET_PAG_PROCESSOR_INFO"></a>0xE9:GET_PAG_PROCESSOR_INFO</h4><p><img src="/image/xcpcmd/GET_PAG_PROCESSOR_INFO.png" alt="GET_PAG_PROCESSOR_INFO"></p>
+<p>PROPERTIES参数：</p>
+<ul>
+<li>FREEZE=1：段可以设置为冻结模式。反之不能设置为冻结模式。</li>
+</ul>
+<h4 id="0xE8-GET-SEGMENT-INFO"><a href="#0xE8-GET-SEGMENT-INFO" class="headerlink" title="0xE8:GET_SEGMENT_INFO"></a>0xE8:GET_SEGMENT_INFO</h4><p><img src="/image/xcpcmd/GET_SEGMENT_INFO.png" alt="GET_SEGMENT_INFO"></p>
+<p>Mode参数：</p>
+<ul>
+<li>0 ：获取此段的基本地址信息</li>
+<li>1 ：获取该分段的标准信息</li>
+<li>2 ：获取这个SEGMENT的地址映射信息</li>
+</ul>
+<p>INFO参数：</p>
+<ul>
+<li>Mode=0：INFO=0：地址</li>
+<li>Mode=0：INFO=1：长度</li>
+<li>Mode=1：INFO参数不关心</li>
+<li>Mode=2：INFO=0：源地址</li>
+<li>Mode=2：INFO=1：目标地址</li>
+<li>Mode=2：INFO=2：地址长度</li>
+</ul>
+<p>INDEX参数：</p>
+<ul>
+<li>Mode=0：INDEX参数不关心</li>
+<li>Mode=1：INDEX参数不关心</li>
+<li>Mode=2：INDEX：MAPPING_INFO所属的地址映射范围标识符</li>
+</ul>
+<p>GET_SEGMENT_INFO返回特定SEGMENT的信息。如果指定的SEGMENT不可用，则返回ERR_OUT_OF_RANGE。</p>
+<p>返回指令(Mode = 0)：</p>
+<ul>
+<li>响应包含这个SEGMENT的地址信息。</li>
+<li>如果SEGMENT_INFO = 0，该命令将在BASIC_INFO中返回该SEGMENT的地址。</li>
+<li>如果SEGMENT_INFO = 1，该命令将在BASIC_INFO中返回该SEGMENT的长度。</li>
+</ul>
+<p>返回指令(Mode = 1)：</p>
+<ul>
+<li>响应包含关于这个SEGMENT的标准信息。</li>
+<li>MAX_PAGES：表示该SEGMENT可用的page数量。</li>
+<li>EXTENSION用于SET_MTA, SHORT_UPLOAD和SHORT_DOWNLOAD访问该SEGMENT内的PAGE时。</li>
+<li>MAX_MAPPING：表示该SEGMENT内地址范围的数量应用地址映射。</li>
+</ul>
+<p>返回指令(Mode = 2)：</p>
+<ul>
+<li>如果Mode = 2, SEGMENT_INFO表示所请求的映射信息在MAPPING_INDEX的范围。</li>
+<li>如果SEGMENT_INFO = 0，该命令将返回MAPPING_INFO中MAPPING_INDEX的源地址。</li>
+<li>如果SEGMENT_INFO = 1，该命令将返回MAPPING_INFO中MAPPING_INDEX的目的地址。</li>
+<li>如果SEGMENT_INFO = 2，该命令将返回MAPPING_INFO中MAPPING_INDEX的长度。</li>
+</ul>
+<h4 id="0xE7-GET-PAGE-INFO"><a href="#0xE7-GET-PAGE-INFO" class="headerlink" title="0xE7:GET_PAGE_INFO"></a>0xE7:GET_PAGE_INFO</h4><p><img src="/image/xcpcmd/GET_PAGE_INFO.png" alt="GET_PAGE_INFO"></p>
+<p>GET_PAGE_INFO返回特定PAGE的信息。如果指定的PAGE不可用，则返回ERR_OUT_OF_RANGE。</p>
+<p>PROPERTIES参数：</p>
+<ul>
+<li>ECU_ACCESS_x：<ul>
+<li>标志表示ECU是否以及如何访问该页。</li>
+<li>ECU_ACCESS_WITH_XCP、ECU_ACCESS_WITHOUT_XCP = 00：不允许访问ECU</li>
+<li>ECU_ACCESS_WITH_XCP、ECU_ACCESS_WITHOUT_XCP = 01：没有XCP</li>
+<li>ECU_ACCESS_WITH_XCP、ECU_ACCESS_WITHOUT_XCP = 10：只有XCP</li>
+<li>ECU_ACCESS_WITH_XCP、ECU_ACCESS_WITHOUT_XCP = 11：不关心</li>
+</ul>
+</li>
+<li>XCP_READ_ACCESS_x：<ul>
+<li>标志表示XCP主机可以访问这个页面。</li>
+<li>XCP_READ_ACCESS_WITH_ECU、XCP_READ_ACCESS_WITHOUT_ECU = 00：不允许XCP读访问。</li>
+<li>XCP_READ_ACCESS_WITH_ECU、XCP_READ_ACCESS_WITHOUT_ECU = 01：没有ECU。</li>
+<li>XCP_READ_ACCESS_WITH_ECU、XCP_READ_ACCESS_WITHOUT_ECU = 10：只有ECU。</li>
+<li>XCP_READ_ACCESS_WITH_ECU、XCP_READ_ACCESS_WITHOUT_ECU = 11：不关心。</li>
+</ul>
+</li>
+<li>XCP_WRITE_ACCESS_x：<ul>
+<li>标志表示XCP主机可以写入这个页面。 </li>
+<li>XCP_WRITE_ACCESS_WITH_ECU、XCP_WRITE_ACCESS_WITHOUT_ECU = 00：不允许XCP写访问。</li>
+<li>XCP_WRITE_ACCESS_WITH_ECU、XCP_WRITE_ACCESS_WITHOUT_ECU = 01：没有ECU。</li>
+<li>XCP_WRITE_ACCESS_WITH_ECU、XCP_WRITE_ACCESS_WITHOUT_ECU = 10：只有ECU。</li>
+<li>XCP_WRITE_ACCESS_WITH_ECU、XCP_WRITE_ACCESS_WITHOUT_ECU = 11：不关心。</li>
+</ul>
+</li>
+</ul>
+<h4 id="0xE6-SET-SEGMENT-MODE"><a href="#0xE6-SET-SEGMENT-MODE" class="headerlink" title="0xE6:SET_SEGMENT_MODE"></a>0xE6:SET_SEGMENT_MODE</h4><p><img src="/image/xcpcmd/SET_SEGMENT_MODE.png" alt="SET_SEGMENT_MODE"></p>
+<p>如果指定的SEGMENT不可用，则返回ERR_OUT_OF_RANGE。</p>
+<p>Mode参数：</p>
+<ul>
+<li>FREEZE=1： 使能冻结模式。反之关闭冻结模式。</li>
+</ul>
+<h4 id="0xE5-GET-SEGMENT-MODE"><a href="#0xE5-GET-SEGMENT-MODE" class="headerlink" title="0xE5:GET_SEGMENT_MODE"></a>0xE5:GET_SEGMENT_MODE</h4><p><img src="/image/xcpcmd/GET_SEGMENT_MODE.png" alt="GET_SEGMENT_MODE"></p>
+<p>如果指定的SEGMENT不可用，则返回ERR_OUT_OF_RANGE。</p>
+<h4 id="0xE4-COPY-CAL-PAGE"><a href="#0xE4-COPY-CAL-PAGE" class="headerlink" title="0xE4:COPY_CAL_PAGE"></a>0xE4:COPY_CAL_PAGE</h4><p><img src="/image/xcpcmd/COPY_CAL_PAGE.png" alt="COPY_CAL_PAGE"></p>
+<ul>
+<li>该命令强制从机将一个校准页复制到另一个校准页。此命令仅在定义了多个校准页时可用。</li>
+<li>原则上，任何段的任何页都可以复制到任何段的任何页。</li>
+<li>如果校准数据页不能复制到给定的目的地，例如，由于目标是一个flash段，则返回ERR_WRITE_PROTECTED。</li>
+<li>如果校准数据页不可用，则返回ERR_PAGE_NOT_VALID或ERR_SEGMENT_NOT_VALID。</li>
+</ul>
+<h2 id="数据采集-DAQ-指令-静态"><a href="#数据采集-DAQ-指令-静态" class="headerlink" title="数据采集(DAQ)指令(静态)"></a>数据采集(DAQ)指令(静态)</h2><h3 id="必实现指令-3"><a href="#必实现指令-3" class="headerlink" title="必实现指令"></a>必实现指令</h3><h4 id="0xE3-CLEAR-DAQ-LIST"><a href="#0xE3-CLEAR-DAQ-LIST" class="headerlink" title="0xE3:CLEAR_DAQ_LIST"></a>0xE3:CLEAR_DAQ_LIST</h4><p><img src="/image/xcpcmd/CLEAR_DAQ_LIST.png" alt="CLEAR_DAQ_LIST"></p>
+<ul>
+<li>此命令可用于预定义的和可配置的DAQ列表，因此范围DAQ_LIST_NUMBER是[0,1，..MAX_DAQ-1]。</li>
+<li>如果指定的列表不可用，则返回ERR_OUT_OF_RANGE。</li>
+<li>CLEAR_DAQ_LIST清除指定的DAQ列表。对于可配置的DAQ列表，所有ODT表项将被重置为address=0, extension=0和size=0(如果有效:bit_offset = 0xFF)。</li>
+<li>预定义的和可配置的DAQ列表，此列表上的运行数据传输将停止，所有的DAQ列表状态被重置。</li>
+</ul>
+<h4 id="0xE2-SET-DAQ-PTR"><a href="#0xE2-SET-DAQ-PTR" class="headerlink" title="0xE2:SET_DAQ_PTR"></a>0xE2:SET_DAQ_PTR</h4><p><img src="/image/xcpcmd/SET_DAQ_PTR.png" alt="SET_DAQ_PTR"></p>
+<ul>
+<li>为WRITE_DAQ或READ_DAQ的后续操作来初始化DAQ列表指针。</li>
+<li>如果指定的列表不可用，则返回ERR_OUT_OF_RANGE。</li>
+<li>ODT_NUMBER是该DAQ列表中的ODT编号。</li>
+<li>ODT_ENTRY_NUMBER是这个ODT中的ODT条目号。</li>
+</ul>
+<h4 id="0xE1-WRITE-DAQ"><a href="#0xE1-WRITE-DAQ" class="headerlink" title="0xE1:WRITE_DAQ"></a>0xE1:WRITE_DAQ</h4><p><img src="/image/xcpcmd/WRITE_DAQ.png" alt="WRITE_DAQ"></p>
+<ul>
+<li>将一个ODT条目写入由DAQ列表指针定义的DAQ列表(参见SET_DAQ_PTR)。</li>
+<li>WRITE_DAQ仅适用于可配置DAQ列表中的元素。因此在前面的SET_DAQ_PTR中使用的DAQ_LIST_NUMBER必须在这个范围内[MIN_DAQ MIN_DAQ + 1 . . MAX_DAQ-1]。否则从机将返回一个ERR_WRITE_PROTECTED在WRITE_DAQ的负响应中。</li>
+<li>BIT_OFFSET字段允许传输表示的数据刺激元素位的状态。e.g Bit7 -&gt; BIT_MASK = 0x80 -&gt; BIT_OFFSET = 0x07 </li>
+<li>当BIT_OFFSET = FF时，该字段可以忽略。WRITE_DAQ适用于正常值大小用AG表示的数据元素。</li>
+<li>如果 BIT_OFFSET 从 0x00 到 0x1F，ODTentry 描述了一个代表位状态的元素。在这种情况下，DAQ的大小元素必须总是等于GRANULARITY_ODT_ENTRY_SIZE_x。如果这个元素= 0，位的值为0。元素&gt;0，则元素的值为1。</li>
+<li>ODT条目的大小必须满足粒度和最大值的规则。(ref GET_DAQ_RESOLUTION_INFO)。</li>
+<li>DAQ列表指针自动递增到下一个ODT条目</li>
+<li>写入ODT的最后一个ODT条目后，DAQ指针的值为未定义的。主机必须确保正确分配DAQ指针到下一个DAQ列表的下一个ODT。</li>
+</ul>
+<h4 id="0xE0-SET-DAQ-LIST-MODE"><a href="#0xE0-SET-DAQ-LIST-MODE" class="headerlink" title="0xE0:SET_DAQ_LIST_MODE"></a>0xE0:SET_DAQ_LIST_MODE</h4><p><img src="/image/xcpcmd/SET_DAQ_LIST_MODE.png" alt="SET_DAQ_LIST_MODE"></p>
+<ul>
+<li>此命令可用于预定义的和可配置的DAQ列表，因此范围DAQ_LIST_NUMBER是[0,1，..MAX_DAQ-1]。如果指定的列表不可用，则返回ERR_OUT_OF_RANGE。</li>
+</ul>
+<p>Mode参数：</p>
+<ul>
+<li><p>DIRECTION=0：DAQ设置为数据采集模式(Slave -&gt; Master)</p>
+</li>
+<li><p>DIRECTION=1：STIM设置为数据刺激模式(Master -&gt; Slave)</p>
+</li>
+<li><p>TIMESTAMP=1：使能时间戳，反之关闭。</p>
+</li>
+<li><p>PID_OFF =1：发送DTO不含PID，反之包含PID。</p>
+</li>
+<li><p>TIMESTAMP标志将DAQ列表设置为时间戳模式。</p>
+</li>
+<li><p>GET_DAQ_RESOLUTION_INFO中的TIMESTAMP_MODE中的TIMESTAMP_FIXED标志表示Master不能通过SET_DAQ_LIST_MODE关闭时间戳。如果主机仍然尝试这样做，从服务器将使用ERR_CMD_SYNTAX答复。</p>
+</li>
+<li><p>事件通道号指定有效确定的通用信号源数据传输时序。</p>
+</li>
+<li><p>DAQ列表优先级指定处理该DAQ列表时的优先级。priority = FF优先级最高。</p>
+</li>
+<li><p>如果ECU不支持DAQ列表优先级，则当DAQ列表优先级&gt; 0，将通过返回ERR_OUT_OF_RANGE表示。</p>
+</li>
+</ul>
+<h4 id="0xDF-GET-DAQ-LIST-MODE"><a href="#0xDF-GET-DAQ-LIST-MODE" class="headerlink" title="0xDF:GET_DAQ_LIST_MODE"></a>0xDF:GET_DAQ_LIST_MODE</h4><p><img src="/image/xcpcmd/GET_DAQ_LIST_MODE.png" alt="GET_DAQ_LIST_MODE"></p>
+<ul>
+<li>返回指定DAQ列表的当前模式的信息。该命令可以是用于预定义的和可配置的DAQ列表，因此范围为DAQ_LIST_NUMBER是[0,1，..MAX_DAQ-1]。如果指定的列表不可用，则返回ERR_OUT_OF_RANGE。</li>
+</ul>
+<p>Mode参数：</p>
+<ul>
+<li>SELECTED=1：已选择DAQ列表。反之未选择DAQ列表。</li>
+<li>DIRECTION=0：DAQ数据采集方式已设置。</li>
+<li>DIRECTION=1：STIM数据刺激模式已设置。</li>
+<li>TIMESTAMP=0：时间戳关闭，反之打开。</li>
+<li>PID_OFF = 1：DTO的PID关闭，反之打开。</li>
+<li>RUNNING=1：DAQ运行中，反之未运行。</li>
+<li>RESUME=1：此DAQ列表是在RESUME模式中使用的配置的一部分。</li>
+</ul>
+<p>说明： </p>
+<ul>
+<li>SELECTED标志表示该DAQ列表已被前一个START_STOP_DAQ_LIST(选择)。如果下一个命令是START_STOP_SYNCH，这将启动/停止此DAQ列表。如果下一个命令是SET_REQUEST，这将使DAQ列表成为配置的一部分之后将被清除或存储到非易失性内存中。</li>
+<li>DIRECTION标志指示该DAQ列表是否为同步数据配置获得或刺激。</li>
+<li>RUNNING标志表示DAQ列表已由主服务器主动启动START_STOP_DAQ_LIST或START_STOP_SYNCH，或者slave在RESUME中mode自动启动DAQ列表。RESUME标志表示此DAQ列表是RESUME中使用的配置的一部分模式。</li>
+</ul>
+<h4 id="0xDE-START-STOP-DAQ-LIST"><a href="#0xDE-START-STOP-DAQ-LIST" class="headerlink" title="0xDE:START_STOP_DAQ_LIST"></a>0xDE:START_STOP_DAQ_LIST</h4><p><img src="/image/xcpcmd/START_STOP_DAQ_LIST.png" alt="START_STOP_DAQ_LIST"></p>
+<p>Mode参数：</p>
+<ul>
+<li>00：停止</li>
+<li>01：启动</li>
+<li>02：选择</li>
+</ul>
+<p>此命令可用于预定义的和可配置的DAQ列表，因此范围DAQ_LIST_NUMBER是[0,1，..MAX_DAQ-1]。如果指定的列表不可用，则返回ERR_OUT_OF_RANGE。<br>此命令用于启动、停止或准备指定的同步启动DAQ_LIST_NUMBER。mode参数允许启动或停止特定的DAQ列表。选择模式使用提供的参数配置DAQ列表，但不启动指定列表的数据传输。此模式用于同步启动/停止所有配置的DAQ列表(参考START_STOP_SYNCH)或用于RESUME模式(参考SET_REQUEST)。<br>从设备必须快速在GET_DAQ_LIST_MODE模式中重置SELECTED标志因为START_STOP_SYNCH或SET_REQUEST已被确认。<br>如果至少有一个DAQ列表已经启动，则从设备处于数据传输模式。GET_STATUS命令将返回DAQ_RUNNING状态。</p>
+<ul>
+<li>如果DTO报文的标识字段类型为absolute ODT number，则FIRST_PID为此DAQ列表传输的第一个ODT的DTO包中的绝对ODT号。</li>
+<li>任何其他ODT的绝对ODT数可以通过以下方式确定:<br>Absolute_ODT_number(ODT i in DAQ list j) = FIRST_PID(DAQ list j) + relative_ODT_NUMBER(ODT i) </li>
+<li>如果DTO报文标识字段类型为relative ODT number and absolute DAQ list number， FIRST_PID可以忽略。</li>
+</ul>
+<h4 id="0xDD-START-STOP-SYNCH"><a href="#0xDD-START-STOP-SYNCH" class="headerlink" title="0xDD:START_STOP_SYNCH"></a>0xDD:START_STOP_SYNCH</h4><p><img src="/image/xcpcmd/START_STOP_SYNCH.png" alt="START_STOP_SYNCH"></p>
+<p>该命令用于同步启停数据的传输采集列表。<br>所有的DAQ列表或仅到选定的列表(以前配置为START_STOP_DAQ_LIST(选择))。从设备必须重置DAQ表的SELECTED，在成功执行START_STOP_SYNCH后。</p>
+<p>Mode参数：</p>
+<ul>
+<li>00：停止所有</li>
+<li>01：启动被选择的</li>
+<li>02：停止被选择的</li>
+</ul>
+<h3 id="可选实现指令-3"><a href="#可选实现指令-3" class="headerlink" title="可选实现指令"></a>可选实现指令</h3><h4 id="0xDC-GET-DAQ-CLOCK"><a href="#0xDC-GET-DAQ-CLOCK" class="headerlink" title="0xDC:GET_DAQ_CLOCK"></a>0xDC:GET_DAQ_CLOCK</h4><p><img src="/image/xcpcmd/GET_DAQ_CLOCK.png" alt="GET_DAQ_CLOCK"></p>
+<p>同步空闲的运行数据采集时钟数据采集时钟。这是可选的。</p>
+<h4 id="0xDB-READ-DAQ"><a href="#0xDB-READ-DAQ" class="headerlink" title="0xDB:READ_DAQ"></a>0xDB:READ_DAQ</h4><p><img src="/image/xcpcmd/READ_DAQ.png" alt="READ_DAQ"></p>
+<p>读取由DAQ列表指针定义的DAQ列表的一个ODT条目。DAQ表指针在同一个ODT中递增(参见WRITE_DAQ)。<br>READ_DAQ可以用于预定义的和可配置的DAQ列表中的元素。因此上面SET_DAQ_PTR中使用的DAQ_LIST_NUMBER可以在这个范围内[0,1,…MAX_DAQ-1]。</p>
+<blockquote>
+<p>ODT条目的大小必须满足粒度和最大值的规则。(ref GET_DAQ_RESOLUTION_INFO)。</p>
+</blockquote>
+<h4 id="0xDA-GET-DAQ-PROCESSOR-INFO"><a href="#0xDA-GET-DAQ-PROCESSOR-INFO" class="headerlink" title="0xDA:GET_DAQ_PROCESSOR_INFO"></a>0xDA:GET_DAQ_PROCESSOR_INFO</h4><p><img src="/image/xcpcmd/GET_DAQ_PROCESSOR_INFO.png" alt="GET_DAQ_PROCESSOR_INFO"></p>
+<p>PROPERTIES参数：</p>
+<ul>
+<li>DAQ_CONFIG_TYPE=0：静态DAQ列表配置</li>
+<li>DAQ_CONFIG_TYPE=1：动态DAQ列表配置</li>
+<li>PRESCALER_SUPPORTED=0：不支持预分频</li>
+<li>PRESCALER_SUPPORTED=1：支持预分频</li>
+<li>RESUME_SUPPORTED=0：DAQ列表不能设置为RESUME模式</li>
+<li>RESUME_SUPPORTED=1：DAQ列表能设置为RESUME模式</li>
+<li>BIT_STIM_SUPPORTED=0：不支持按位数据刺激</li>
+<li>BIT_STIM_SUPPORTED=1：支持按位数据刺激</li>
+<li>TIMESTAMP_SUPPORTED=0：不支持时间戳模式</li>
+<li>TIMESTAMP_SUPPORTED=1：支持时间戳模式</li>
+<li>PID_OFF_SUPPORTED=0：标识字段不能关闭</li>
+<li>PID_OFF_SUPPORTED=1：标识字段能关闭</li>
+<li>OVERLOAD_EVENT、OVERLOAD_MSB=00：无过载指示</li>
+<li>OVERLOAD_EVENT、OVERLOAD_MSB=01：PID的MSB过载指示</li>
+<li>OVERLOAD_EVENT、OVERLOAD_MSB=10：事件包的过载指示</li>
+<li>OVERLOAD_EVENT、OVERLOAD_MSB=11：不允许出现该状态</li>
+</ul>
+<p>为指示超限情况，从机可以设置的最大位(MSB)的下一个发送成功的报文的PID。当使用PID的MSB时ODT的最大数量(绝对或相对)是有限的，并且必须在范围:<br>0x00&lt;= ODT_NUMBER(DAQ with overrun_msb)&lt;=0x7C</p>
+<p>DAQ_KEY_BYTE参数：</p>
+<ul>
+<li>Optimisation_Type_3、Optimisation_Type_2、Optimisation_Type_1、Optimisation_Type_0=0000：OM_DEFAULT</li>
+<li>Optimisation_Type_3、Optimisation_Type_2、Optimisation_Type_1、Optimisation_Type_0=0001：OM_ODT_TYPE_16 </li>
+<li>Optimisation_Type_3、Optimisation_Type_2、Optimisation_Type_1、Optimisation_Type_0=0010：OM_ODT_TYPE_32</li>
+<li>Optimisation_Type_3、Optimisation_Type_2、Optimisation_Type_1、Optimisation_Type_0=0011：OM_ODT_TYPE_64</li>
+<li>Optimisation_Type_3、Optimisation_Type_2、Optimisation_Type_1、Optimisation_Type_0=0100：OM_ODT_TYPE_ALIGNMENT</li>
+<li>Optimisation_Type_3、Optimisation_Type_2、Optimisation_Type_1、Optimisation_Type_0=0101：OM_MAX_ENTRY_SIZE</li>
+<li>Address_Extension_DAQ、Address_Extension_ODT=00：在同一个ODT中，地址扩展名可以不同。</li>
+<li>Address_Extension_DAQ、Address_Extension_ODT=01：一个ODT内的所有条目的地址扩展名必须相同。</li>
+<li>Address_Extension_DAQ、Address_Extension_ODT=10：不允许状态。</li>
+<li>Address_Extension_DAQ、Address_Extension_ODT=11：一个DAQ内的所有条目的地址扩展必须相同。</li>
+<li>Identification_Field_Type_1、Identification_Field_Type_0=00：ODT绝对编号</li>
+<li>Identification_Field_Type_1、Identification_Field_Type_0=01：相对ODT号，绝对DAQ列表号(BYTE)</li>
+<li>Identification_Field_Type_1、Identification_Field_Type_0=10：ODT相对编号，DAQ绝对编号(WORD)</li>
+<li>Identification_Field_Type_1、Identification_Field_Type_0=11：相对ODT编号，绝对DAQ列表编号(WORD，对齐)</li>
+</ul>
+<h4 id="0xD9-GET-DAQ-RESOLUTION-INFO"><a href="#0xD9-GET-DAQ-RESOLUTION-INFO" class="headerlink" title="0xD9:GET_DAQ_RESOLUTION_INFO"></a>0xD9:GET_DAQ_RESOLUTION_INFO</h4><p><img src="/image/xcpcmd/GET_DAQ_RESOLUTION_INFO.png" alt="GET_DAQ_RESOLUTION_INFO"></p>
+<p>GRANULARITY_ODT_ENTRY_SIZE_x的可能值是{1,2,4,8}。对于ODT条目所描述的元素的地址，必须满足以下要求:<br>Address mod GRANULARITY_ODT_ENTRY_SIZE_x = 0 </p>
+<p>对于ODT条目描述的每个元素大小，必须满足以下要求:<br>SizeOf(element described by ODT entry)mod GRANULARITY_ODT_ENTRY_SIZE_x = 0</p>
+<p>参数MAX_ODT_ENTRY_SIZE_x表示ODT条目描述的元素。对于ODT条目描述的每个元素大小，必须满足以下要求:<br>SizeOf(element described by ODT entry) &lt;= MAX_ODT_ENTRY_SIZE_x </p>
+<p>如果从机不支持时间戳模式(GET_DAQ_PROCESSOR_INFO中没有TIMESTAMP_SUPPORTED)、参数TIMESTAMP_MODE和TIMESTAMP_TICKS无效。</p>
+<p>如果从设备支持时间戳模式，则TIMESTAMP_MODE和TIMESTAMP_TICKS包含数据采集时钟的分辨率信息。数据采集时钟是一个自由运行的计数器，永远不会被重置或修改。</p>
+<p>TIMESTAMP_MODE参数：</p>
+<ul>
+<li>Size_2、Size_1、Size_0=000：时间戳的大小(字节) = 没有</li>
+<li>Size_2、Size_1、Size_0=001：时间戳的大小(字节) = 1</li>
+<li>Size_2、Size_1、Size_0=010：时间戳的大小(字节) = 2</li>
+<li>Size_2、Size_1、Size_0=011：时间戳的大小(字节) = 不允许</li>
+<li>Size_2、Size_1、Size_0=100：时间戳的大小(字节) = 4</li>
+<li>TIMESTAMP_FIXED标志表示Slave总是发送DTO报文(stamped mode)。</li>
+<li>Unit_3、Unit_2、Unit_1、Unit_0=0000： DAQ_TIMESTAMP_UNIT_1NS</li>
+<li>Unit_3、Unit_2、Unit_1、Unit_0=0001： DAQ_TIMESTAMP_UNIT_10NS</li>
+<li>Unit_3、Unit_2、Unit_1、Unit_0=0010： DAQ_TIMESTAMP_UNIT_100NS</li>
+<li>Unit_3、Unit_2、Unit_1、Unit_0=0011： DAQ_TIMESTAMP_UNIT_1US</li>
+<li>Unit_3、Unit_2、Unit_1、Unit_0=0100： DAQ_TIMESTAMP_UNIT_10US</li>
+<li>Unit_3、Unit_2、Unit_1、Unit_0=0101： DAQ_TIMESTAMP_UNIT_100US</li>
+<li>Unit_3、Unit_2、Unit_1、Unit_0=0110： DAQ_TIMESTAMP_UNIT_1MS</li>
+<li>Unit_3、Unit_2、Unit_1、Unit_0=0111： DAQ_TIMESTAMP_UNIT_10MS</li>
+<li>Unit_3、Unit_2、Unit_1、Unit_0=1000： DAQ_TIMESTAMP_UNIT_100MS</li>
+<li>Unit_3、Unit_2、Unit_1、Unit_0=1001： DAQ_TIMESTAMP_UNIT_1S</li>
+</ul>
+<h4 id="0xD8-GET-DAQ-LIST-INFO"><a href="#0xD8-GET-DAQ-LIST-INFO" class="headerlink" title="0xD8:GET_DAQ_LIST_INFO"></a>0xD8:GET_DAQ_LIST_INFO</h4><p><img src="/image/xcpcmd/GET_DAQ_LIST_INFO.png" alt="GET_DAQ_LIST_INFO"></p>
+<p>GET_DAQ_LIST_INFO返回特定DAQ列表的信息。此命令可用于预定义的和可配置的DAQ列表，因此范围DAQ_LIST_NUMBER是[0,1，..MAX_DAQ-1]。如果指定的列表不可用，则返回ERR_OUT_OF_RANGE。</p>
+<p>PROPERTIES参数：</p>
+<ul>
+<li>PREDEFINED=0：可更改DAQ列表配置</li>
+<li>PREDEFINED=1：DAQ列表配置固定</li>
+<li>EVENT_FIXED=0：事件通道可以更改</li>
+<li>EVENT_FIXED=1：事件通道配置固定</li>
+<li>STIM、DAQ=00：不允许</li>
+<li>STIM、DAQ=01：DAQ_LIST_TYPE：仅在DIRECTION = DAQ支持</li>
+<li>STIM、DAQ=10：DAQ_LIST_TYPE：仅在DIRECTION = STIM支持</li>
+<li>STIM、DAQ=11：DAQ_LIST_TYPE：在支持两个方向(但不同时)</li>
+</ul>
+<p>如果静态配置DAQ列表，则MAX_ODT指定该DAQ的odt数量和MAX_ODT_ENTRIES表示每个ODT中ODT表项的个数。<br>FIXED_EVENT表示用于此DAQ列表的固定事件通道的编号。</p>
+<h4 id="0xD7-GET-DAQ-EVENT-INFO"><a href="#0xD7-GET-DAQ-EVENT-INFO" class="headerlink" title="0xD7:GET_DAQ_EVENT_INFO"></a>0xD7:GET_DAQ_EVENT_INFO</h4><p><img src="/image/xcpcmd/GET_DAQ_EVENT_INFO.png" alt="GET_DAQ_EVENT_INFO"></p>
+<p>GET_DAQ_EVENT_INFO返回特定事件通道的信息。的数字。从0到MAX_EVENT_CHANNEL-1指定事件通道。如果指定如果事件通道不可用，则返回ERR_OUT_OF_RANGE。</p>
+<p>PROPERTIES参数：</p>
+<ul>
+<li>STIM 、DAQ=00：不允许</li>
+<li>STIM 、DAQ=01：EVENT_CHANNEL_TYPE：仅支持DIRECTION = DAQ列表</li>
+<li>STIM 、DAQ=10：EVENT_CHANNEL_TYPE：仅支持DIRECTION = STIM列表</li>
+<li>STIM 、DAQ=11：EVENT_CHANNEL_TYPE：两种都支持(同时)</li>
+</ul>
+<p>MAX_DAQ_LIST可分配的最大DAQ列表数量事件通道。MAX_DAQ_LIST = 0x00表示此事件可用，但当前为不可用。MAX_DAQ_LIST = 0xFF表示不受限。<br>该命令会自动将从MTA (Memory Transfer Address)中上传事件通道名称，使用一个或多个UPLOAD命令。事件通道名称length指定名称中的ASCII字节数。不包含结尾\0。<br>事件通道时间周期指示从设备处理该事件的采样周期事件通道。有关事件通道时间单位的定义，请参阅时间戳单位。<br>事件通道优先级指定此事件通道的优先级从机处理不同的事件通道。这个优先级是一个固定的属性<br>，因此是只读的。事件通道与事件通道priority = FF优先级最高。</p>
+<h2 id="数据采集-DAQ-指令-动态"><a href="#数据采集-DAQ-指令-动态" class="headerlink" title="数据采集(DAQ)指令(动态)"></a>数据采集(DAQ)指令(动态)</h2><h3 id="可选实现指令-4"><a href="#可选实现指令-4" class="headerlink" title="可选实现指令"></a>可选实现指令</h3><h4 id="0xD6-FREE-DAQ"><a href="#0xD6-FREE-DAQ" class="headerlink" title="0xD6:FREE_DAQ"></a>0xD6:FREE_DAQ</h4><p><img src="/image/xcpcmd/FREE_DAQ.png" alt="FREE_DAQ"></p>
+<p>该命令清除所有的DAQ列表，并释放所有动态分配的DAQ列表，ODT和ODT条目。在动态DAQ列表配置序列的开始，总主总是首先必须发送一个FREE_DAQ。</p>
+<h4 id="0xD5-ALLOC-DAQ"><a href="#0xD5-ALLOC-DAQ" class="headerlink" title="0xD5:ALLOC_DAQ"></a>0xD5:ALLOC_DAQ</h4><p><img src="/image/xcpcmd/ALLOC_DAQ.png" alt="ALLOC_DAQ"></p>
+<ul>
+<li>这个命令为XCP从设备分配了一些DAQ列表。如果没有足够的内存来分配请求的DAQ列表ERR_MEMORY_OVERFLOW将作为负响应返回。</li>
+<li>主设备必须按照定义的顺序使用ALLOC_DAQ和FREE_DAQ，ALLOC_ODT和ALLOC_ODT_ENTRY。如果主服务器直接发送ALLOC_DAQ和ALLOC_ODT而没有发送FREE_DAQ，则从服务器返回ERR_SEQUENCE作为消极的回应。</li>
+<li>如果主设备直接在ALLOC_ODT_ENTRY之后发送一个ALLOC_DAQ，而没有在之间发送FREE_DAQ，从服务器返回一个ERR_SEQUENCE作为负响应。</li>
+</ul>
+<h4 id="0xD4-ALLOC-ODT"><a href="#0xD4-ALLOC-ODT" class="headerlink" title="0xD4:ALLOC_ODT"></a>0xD4:ALLOC_ODT</h4><p><img src="/image/xcpcmd/ALLOC_ODT.png" alt="ALLOC_ODT"></p>
+<ul>
+<li>该命令分配多个odt，并将它们分配到指定的DAQ列表中。此命令只能用于可配置的DAQ列表，因此DAQ_LIST_NUMBER是[MIN_DAQ, MIN_DAQ+1，..MIN_DAQ+DAQ_COUNT-1]。如果指定的列表不可用，则返回ERR_OUT_OF_RANGE。</li>
+<li>如果没有足够的内存来分配请求的odt，ERR_MEMORY_OVERFLOW将作为负响应返回。</li>
+<li>主设备必须按照定义的顺序使用ALLOC_DAQ和FREE_DAQ，ALLOC_ODT和ALLOC_ODT_ENTRY。如果主服务器直接发送ALLOC_DAQ和ALLOC_ODT而没有发送FREE_DAQ，则从服务器返回ERR_SEQUENCE作为消极的回应。</li>
+<li>如果主设备直接在ALLOC_ODT_ENTRY之后发送一个ALLOC_DAQ，而没有在之间发送FREE_DAQ，从服务器返回一个ERR_SEQUENCE作为负响应。</li>
+</ul>
+<h4 id="0xD3-ALLOC-ODT-ENTRY"><a href="#0xD3-ALLOC-ODT-ENTRY" class="headerlink" title="0xD3:ALLOC_ODT_ENTRY"></a>0xD3:ALLOC_ODT_ENTRY</h4><p><img src="/image/xcpcmd/ALLOC_ODT_ENTRY.png" alt="ALLOC_ODT_ENTRY"></p>
+<ul>
+<li>该命令分配若干ODT表项，并将它们分配给中指定的ODT具体的DAQ名单。</li>
+<li>此命令只能用于可配置的DAQ列表，因此DAQ_LIST_NUMBER是[MIN_DAQ, MIN_DAQ+1，..MIN_DAQ+DAQ_COUNT-1]。如果指定的列表不可用，则返回ERR_OUT_OF_RANGE。ODT_NUMBER是该DAQ列表中的相对ODT编号。</li>
+<li>如果没有足够的内存来分配请求的ODT项ERR_MEMORY_OVERFLOW将作为负响应返回。</li>
+<li>主设备必须按照定义的顺序使用ALLOC_DAQ和FREE_DAQ，ALLOC_ODT和ALLOC_ODT_ENTRY。如果主服务器直接发送ALLOC_DAQ和ALLOC_ODT而没有发送FREE_DAQ，则从服务器返回ERR_SEQUENCE作为消极的回应。</li>
+<li>如果主设备直接在ALLOC_ODT_ENTRY之后发送一个ALLOC_DAQ，而没有在之间发送FREE_DAQ，从服务器返回一个ERR_SEQUENCE作为负响应。</li>
+</ul>
+<h2 id="存储器编程-PGM-指令"><a href="#存储器编程-PGM-指令" class="headerlink" title="存储器编程(PGM)指令"></a>存储器编程(PGM)指令</h2><h3 id="必实现指令-4"><a href="#必实现指令-4" class="headerlink" title="必实现指令"></a>必实现指令</h3><h4 id="0xD2-PROGRAM-START"><a href="#0xD2-PROGRAM-START" class="headerlink" title="0xD2:PROGRAM_START"></a>0xD2:PROGRAM_START</h4><p><img src="/image/xcpcmd/PROGRAM_START.png" alt="PROGRAM_START"></p>
+<ul>
+<li>此命令用于指示非易失性内存编程的开始序列。如果从设备不处于允许编程的状态将返回ERR_GENERIC。</li>
+<li>内存编程命令PROGRAM_CLEAR, PROGRAM, PROGRAM_MAX或PROGRAM_NEXT不允许，<br>直到成功执行PROGRAM_START命令前。</li>
+<li>非volatile内存编程序列的结束由PROGRAM_RESET命令指示。</li>
+</ul>
+<p>内存编程序列:</p>
+<ol>
+<li>SET_MTA </li>
+<li>PROGRAM_CLEAR </li>
+<li>PROGRAM </li>
+<li>PROGRAM_MAX or PROGRAM_NEXT </li>
+</ol>
+<p>以下命令是可选的(例如验证内存内容): UPLOAD、BUILD_CHECKSUM </p>
+<p>如果非易失性内存编程需要下载额外的代码，下载必须在执行PROGRAM_START命令之前完成。MTA必须指向已下载例程的入口点。</p>
+<p>COMM_MODE参数：</p>
+<ul>
+<li>MASTER_BLOCK_MODE：标志表示主机块模式是否可用</li>
+<li>INTERLEAVED_MODE：标志表示在此期间交错模式是否可用</li>
+<li>SLAVE_BLOCK_MODE：标志表示从机块模式在此期间是否可用</li>
+</ul>
+<p>通信参数MAX_CTO、MAX_BS、MIN_ST和QUEUE_SIZE可能会被修改当从设备处于内存编程模式时。<br>新的通信参数为MAX_CTO_PGM、MAX_BS_PGM、MIN_ST_PGM和QUEUE_SIZE_PGM在回应中返回。</p>
+<h4 id="0xD1-PROGRAM-CLEAR"><a href="#0xD1-PROGRAM-CLEAR" class="headerlink" title="0xD1:PROGRAM_CLEAR"></a>0xD1:PROGRAM_CLEAR</h4><p><img src="/image/xcpcmd/PROGRAM_CLEAR.png" alt="PROGRAM_CLEAR"></p>
+<p>该命令用于在重编程之前清除一部分非易失性内存。</p>
+<p>Mode参数：</p>
+<ul>
+<li>0x00：绝对访问模式(默认)</li>
+<li>0x01：功能访问模式</li>
+</ul>
+<p>绝对访问模式(Absolute Access mode):</p>
+<ul>
+<li>MTA指向从机内部内存扇区的开始。内存扇区在ASAM MCD 2MC从设备中描述文件。</li>
+<li>如果需要按一定的顺序清除多个内存扇区，则主设备必须使用新的MTA重复PROGRAM_CLEAR服务。在这种情况下，必须保留Clear提供的扇区序列号。</li>
+<li>“Clear Range”表示需要清除的内存部分的长度。PROGRAM_CLEAR服务一次清除一个完整的扇区或多个扇区。</li>
+</ul>
+<p>功能访问模式(Functional Access mode):</p>
+<ul>
+<li>MTA功能模式没有影响</li>
+<li>0x00000001：清除所有校准数据区域</li>
+<li>0x00000002：清除所有的代码区(引导区不被覆盖)</li>
+<li>0x00000004：清除NVRAM区域(s)</li>
+<li>0x00000008-0x00000080：保留</li>
+<li>0x00000100-0xFFFFFF00：用户自定义</li>
+</ul>
+<h4 id="0xD0-PROGRAM"><a href="#0xD0-PROGRAM" class="headerlink" title="0xD0:PROGRAM"></a>0xD0:PROGRAM</h4><p><img src="/image/xcpcmd/PROGRAM.png" alt="PROGRAM"></p>
+<ul>
+<li>如果ADDRESS_GRANULYRITY = DWORD，必须使用2个对齐字节才能满足需求。</li>
+<li>元素是BYTE、WORD或DWORD，取决于AG。</li>
+<li>该命令用于对从机内部的数据进行编程。取决于访问模式(由PROGRAM_FORMAT定义)支持2个不同的概念。</li>
+<li>当数据元素的数量为0时，表示内存段的结束。</li>
+<li>整个编程序列的结束由PROGRAM_RESET表示。从设备将进入断开连接状态。通常是硬件复位<br>从设备执行。此命令可能支持块传输，类似命令DOWNLOAD和DOWNLOAD_NEXT。</li>
+</ul>
+<p>绝对访问模式：</p>
+<ul>
+<li>CTO中包含的指定长度(大小)的数据块将被编程非易失性存储器，从MTA开始。MTA将会增加这个数据字节。</li>
+<li>如果需要对多个内存扇区进行编程，则主设备必须保持在IF_DATA描述中给出的信息称为的编程序列号。</li>
+</ul>
+<p>功能访问方式：</p>
+<ul>
+<li>CTO中包含的指定长度(大小)的数据块将被编程非易失性内存。ECU软件知道新flash内容的起始地址，这取决于PROGRAM_CLEAR命令。ECU期待新的flash内容在一个数据流和分配是由ECU自动完成。</li>
+</ul>
+<h4 id="0xCF-PROGRAM-RESET"><a href="#0xCF-PROGRAM-RESET" class="headerlink" title="0xCF:PROGRAM_RESET"></a>0xCF:PROGRAM_RESET</h4><p><img src="/image/xcpcmd/PROGRAM_RESET.png" alt="PROGRAM_RESET"></p>
+<p>此可选命令指示非易失性内存编程序列的结束。它可能会有反应，也可能不会。不管是哪种情况，从设备都会转到断开连接的状态。此命令可用于强制从设备复位。</p>
+<h3 id="可选实现指令-5"><a href="#可选实现指令-5" class="headerlink" title="可选实现指令"></a>可选实现指令</h3><h4 id="0xCE-GET-PGM-PROCESSOR-INFO"><a href="#0xCE-GET-PGM-PROCESSOR-INFO" class="headerlink" title="0xCE:GET_PGM_PROCESSOR_INFO"></a>0xCE:GET_PGM_PROCESSOR_INFO</h4><p><img src="/image/xcpcmd/GET_PGM_PROCESSOR_INFO.png" alt="GET_PGM_PROCESSOR_INFO"></p>
+<p>PROPERTIES参数：</p>
+<ul>
+<li>FUNCTIONAL_MODE、ABSOLUTE_MODE=00：清除编程模式 -&gt; 不允许</li>
+<li>FUNCTIONAL_MODE、ABSOLUTE_MODE=01：清除编程模式 -&gt; 只支持绝对模式</li>
+<li>FUNCTIONAL_MODE、ABSOLUTE_MODE=10：清除编程模式 -&gt; 仅支持功能模式</li>
+<li>FUNCTIONAL_MODE、ABSOLUTE_MODE=11：清除编程模式 -&gt; 都支持</li>
+<li>COMPRESSION_REQUIRED、COMPRESSION_SUPPORTED=00：压缩 -&gt; 不支持</li>
+<li>COMPRESSION_REQUIRED、COMPRESSION_SUPPORTED=01：压缩 -&gt; 支持</li>
+<li>COMPRESSION_REQUIRED、COMPRESSION_SUPPORTED=10：压缩 -&gt; 支持、可请求</li>
+<li>COMPRESSION_REQUIRED、COMPRESSION_SUPPORTED=11：压缩 -&gt; 支持、可请求</li>
+<li>ENCRYPTION_REQUIRED、ENCRYPTION_SUPPORTED=00：编码 -&gt; 不支持</li>
+<li>ENCRYPTION_REQUIRED、ENCRYPTION_SUPPORTED=01：编码 -&gt; 支持</li>
+<li>ENCRYPTION_REQUIRED、ENCRYPTION_SUPPORTED=10：编码 -&gt; 支持、可请求</li>
+<li>ENCRYPTION_REQUIRED、ENCRYPTION_SUPPORTED=11：编码 -&gt; 支持、可请求</li>
+<li>NON_SEQ_PGM_REQUIRED、NON_SEQ_PGM_SUPPORTED=00：不连续编程 -&gt; 不支持</li>
+<li>NON_SEQ_PGM_REQUIRED、NON_SEQ_PGM_SUPPORTED=01：不连续编程 -&gt; 支持</li>
+<li>NON_SEQ_PGM_REQUIRED、NON_SEQ_PGM_SUPPORTED=10：不连续编程 -&gt; 支持、可请求</li>
+<li>NON_SEQ_PGM_REQUIRED、NON_SEQ_PGM_SUPPORTED=11：不连续编程 -&gt; 支持、可请求</li>
+</ul>
+<h4 id="0xCD-GET-SECTOR-INFO"><a href="#0xCD-GET-SECTOR-INFO" class="headerlink" title="0xCD:GET_SECTOR_INFO"></a>0xCD:GET_SECTOR_INFO</h4><p><img src="/image/xcpcmd/GET_SECTOR_INFO.png" alt="GET_SECTOR_INFO"></p>
+<p>GET_SECTOR_INFO返回特定扇区的信息。如果指定的扇区不可用，则返回ERR_OUT_OF_RANGE。此可选命令仅对编程方法“绝对访问模式”有帮助。</p>
+<h4 id="0xCC-PROGRAM-PREPARE"><a href="#0xCC-PROGRAM-PREPARE" class="headerlink" title="0xCC:PROGRAM_PREPARE"></a>0xCC:PROGRAM_PREPARE</h4><p><img src="/image/xcpcmd/PROGRAM_PREPARE.png" alt="PROGRAM_PREPARE"></p>
+<p>此可选命令用于先决条件的代码下载到非易失性内存开始前。MTA指向易失性存储器的开始存储代码的位置。参数Codesize指定将被下载的代码大小。下载是使用后续标准完成的命令，如SET_MTA和DOWNLOAD。<br>代码大小根据AG以BYTE、WORD或DWORD表示。从设备必须确保目标内存区域是可用的，并且它在允许下载代码的操作状态。如果不是，则ERR_GENERIC将返回。</p>
+<h4 id="0xCB-PROGRAM-FORMAT"><a href="#0xCB-PROGRAM-FORMAT" class="headerlink" title="0xCB:PROGRAM_FORMAT"></a>0xCB:PROGRAM_FORMAT</h4><p><img src="/image/xcpcmd/PROGRAM_FORMAT.png" alt="PROGRAM_FORMAT"></p>
+<p>Compression参数：</p>
+<ul>
+<li>0x00：数据未压缩(默认)</li>
+<li>0x80-0xFF：用户定义</li>
+</ul>
+<p>Encryption参数：</p>
+<ul>
+<li>0x00：数据未编码(默认)</li>
+<li>0x80-0xFF：用户定义</li>
+</ul>
+<p>Programming参数：</p>
+<ul>
+<li>0x00：顺序编程(默认)</li>
+<li>0x80-0xFF：用户定义</li>
+</ul>
+<p>Access参数：</p>
+<ul>
+<li>0x00：绝对访问模式(默认)  MTA使用物理地址</li>
+<li>0x01：功能访问方式     MTA的功能是一个新flash内容文件的序列号</li>
+<li>0x80-0xFF：用户定义</li>
+</ul>
+<p>受该指令影响的指令：PROGRAM, PROGRAM_MAX, PROGRAM_NEXT, SET_MTA</p>
+<p>Example：<br>…<br>SET_MTA<br>PROGRAM_FORMAT<br>PROGRAM<br>PROGRAM_NEXT1..n<br>…</p>
+<h4 id="0xCA-PROGRAM-NEXT"><a href="#0xCA-PROGRAM-NEXT" class="headerlink" title="0xCA:PROGRAM_NEXT"></a>0xCA:PROGRAM_NEXT</h4><p><img src="/image/xcpcmd/PROGRAM_NEXT.png" alt="PROGRAM_NEXT"></p>
+<blockquote>
+<p>如果AG = DWORD，则必须使用2个对齐字节以满足对齐要求。<br>ELEMENT是BYTE, WORD或DWORD，取决于AG。<br>该命令用于为PROGRAM命令传输连续的数据字节块传输模式。</p>
+</blockquote>
+<p>如果数据元素的数量与期望值不匹配，则错误码将返回code ERR_SEQUENCE。回应将包含预期的数据元素数量。</p>
+<h4 id="0xC9-PROGRAM-MAX"><a href="#0xC9-PROGRAM-MAX" class="headerlink" title="0xC9:PROGRAM_MAX"></a>0xC9:PROGRAM_MAX</h4><p><img src="/image/xcpcmd/PROGRAM_MAX.png" alt="PROGRAM_MAX"></p>
+<blockquote>
+<p>根据AG的不同，必须使用1或3个对齐字节来满足对齐要求。<br>ELEMENT是BYTE, WORD或DWORD，取决于AG。<br>CTO中包含的MAX_CTO-1元素长度固定的数据块为编程到非易失性存储器中，从MTA开始。MTA将进行后增量MAX_CTO-1。<br>此命令不支持块传输，也不能在块传输中使用序列。</p>
+</blockquote>
+<h4 id="0xC8-PROGRAM-VERIFY"><a href="#0xC8-PROGRAM-VERIFY" class="headerlink" title="0xC8:PROGRAM_VERIFY"></a>0xC8:PROGRAM_VERIFY</h4><p><img src="/image/xcpcmd/PROGRAM_VERIFY.png" alt="PROGRAM_VERIFY"></p>
+<p>使用Mode = 00，主机可以请求从机启动内部测试例程来检查新的flash内容是否验算等于flash的其余部分。<br>使用Mode = 01，主机可以告诉从机，发送给从机一个验证值。</p>
+<p>Verification Type参数：</p>
+<ul>
+<li>0x0001：calibration area(s) of the flash</li>
+<li>0x0002：code area(s) of the flash</li>
+<li>0x0004：complete flash content</li>
+<li>0x0008-0x0080：保留</li>
+<li>0x0100-0xFF00：用户定义</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">fzxhub</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.fzxhub.com/protocol/biao-ding-ji-chu-xcp-xie-yi-zhi-xie-yi-ceng-zhi-ling-xiang-jie/">https://blog.fzxhub.com/protocol/biao-ding-ji-chu-xcp-xie-yi-zhi-xie-yi-ceng-zhi-ling-xiang-jie/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">fzxhub</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/XCP/">
+                                    <span class="chip bg-color">XCP</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A0%87%E5%AE%9A/">
+                                    <span class="chip bg-color">标定</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%B1%BD%E8%BD%A6%E6%8E%A7%E5%88%B6%E5%99%A8/">
+                                    <span class="chip bg-color">汽车控制器</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,wechat,weibo,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/protocol/biao-ding-ji-chu-xcp-xie-yi-zhi-xie-yi-ceng-zhi-ling-xiang-jie/">
+                    <div class="card-image">
+                        
+                        <img src="/image/xcpcmd/CONNECT.png" class="responsive-img" alt="标定基础-XCP协议之协议层指令详解">
+                        
+                        <span class="card-title">标定基础-XCP协议之协议层指令详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文主要是XCP协议的指令详解，接XCP协议之通用层
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/protocol/" class="post-category">
+                                    protocol
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/XCP/">
+                        <span class="chip bg-color">XCP</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%87%E5%AE%9A/">
+                        <span class="chip bg-color">标定</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B1%BD%E8%BD%A6%E6%8E%A7%E5%88%B6%E5%99%A8/">
+                        <span class="chip bg-color">汽车控制器</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/mcu/rui-sa-xin-pian-zai-cs-zhong-fen-qu-fang-fa/">
+                    <div class="card-image">
+                        
+                        <img src="/image/rscs/section.png" class="responsive-img" alt="瑞萨芯片在CS+中分区方法">
+                        
+                        <span class="card-title">瑞萨芯片在CS+中分区方法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            瑞萨芯片在CS+开发需要添加分区时，先规划好分区的地址在section修改
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/mcu/" class="post-category">
+                                    mcu
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%91%9E%E8%90%A8/">
+                        <span class="chip bg-color">瑞萨</span>
+                    </a>
+                    
+                    <a href="/tags/CS/">
+                        <span class="chip bg-color">CS+</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <!-- <span id="year">2019</span> -->
+            <a href="/about" target="_blank">fzxhub</a>
+            <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20033471号</a>
+
+            
+
+            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a> -->
+            <!-- |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
+            <br>
+            
+            
+            
+            
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
