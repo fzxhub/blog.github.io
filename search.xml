@@ -161,9 +161,9 @@
       
         <tags>
             
-            <tag> eMIOS </tag>
-            
             <tag> 单片机 </tag>
+            
+            <tag> eMIOS </tag>
             
             <tag> 外设 </tag>
             
@@ -217,11 +217,11 @@
       
         <tags>
             
-            <tag> 单片机 </tag>
-            
             <tag> link </tag>
             
             <tag> logic </tag>
+            
+            <tag> 单片机 </tag>
             
         </tags>
       
@@ -443,9 +443,9 @@
       
         <tags>
             
-            <tag> 单片机 </tag>
-            
             <tag> link </tag>
+            
+            <tag> 单片机 </tag>
             
             <tag> debuger </tag>
             
