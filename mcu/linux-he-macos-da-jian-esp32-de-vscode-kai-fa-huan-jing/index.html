@@ -563,12 +563,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
-                                <span class="chip bg-color">嵌入式</span>
-                            </a>
-                        
                             <a href="/tags/esp32/">
                                 <span class="chip bg-color">esp32</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                                <span class="chip bg-color">嵌入式</span>
                             </a>
                         
                     </div>
@@ -606,14 +606,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -652,32 +652,32 @@
 <ul>
 <li>linux</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">apt</span> purge vim-common
-<span class="token function">apt</span> <span class="token function">install</span> <span class="token function">vim</span>
-<span class="token function">apt</span> <span class="token function">install</span> <span class="token function">git</span>
-<span class="token function">apt</span> <span class="token function">install</span> <span class="token function">git</span> <span class="token function">wget</span> flex bison gperf python3 python3-pip 
-<span class="token function">apt</span> <span class="token function">install</span> python3-setuptools cmake ninja-build ccache 
-<span class="token function">apt</span> <span class="token function">install</span> libffi-dev libssl-dev dfu-util libusb-1.0-0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">apt purge vim-common
+apt install vim
+apt install git
+apt install git wget flex bison gperf python3 python3-pip 
+apt install python3-setuptools cmake ninja-build ccache 
+apt install libffi-dev libssl-dev dfu-util libusb-1.0-0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>macos</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">brew <span class="token function">install</span> <span class="token function">vim</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">brew install vim<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="第二步：克隆esp-idf仓库"><a href="#第二步：克隆esp-idf仓库" class="headerlink" title="第二步：克隆esp-idf仓库"></a>第二步：克隆esp-idf仓库</h2><p>esp-idf项目是分子模块进行团队开发的SDK。因此直接克隆的仓库不能直接使用需要将子模块也克隆才能使用，我在这里卡了许久。遇到问题，使用多注意命令行的提示，对应想办法解决。</p>
 <ul>
 <li>linux、macos</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#方案一：这是直接递归克隆乐鑫在GitHub上的esp-idf仓库，但是国内容易失败，可以试试</span>
-<span class="token function">git</span> clone --recursive  https://github.com/espressif/esp-idf.git
-<span class="token comment">#方案二：先克隆esp-idf仓库，然后拉取子模块</span>
-<span class="token function">git</span> clone https://github.com/espressif/esp-idf.git
-<span class="token function">git</span> submodule update --init --recursive
-<span class="token comment">#方案三：1.这是使用国内gitee托管克隆仓库</span>
-<span class="token function">git</span> clone https://gitee.com/EspressifSystems/esp-idf.git
-<span class="token comment">#方案三：2.克隆国内gitee的工具仓库</span>
-<span class="token function">git</span> clone https://gitee.com/EspressifSystems/esp-gitee-tools.git
-<span class="token comment">#方案三：3.复制esp-gitee-tools中的submodule-update.sh到esp-idf，然后执行submodule-update.sh</span>
-./submodule-update.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#方案一：这是直接递归克隆乐鑫在GitHub上的esp-idf仓库，但是国内容易失败，可以试试
+git clone --recursive  https:&#x2F;&#x2F;github.com&#x2F;espressif&#x2F;esp-idf.git
+#方案二：先克隆esp-idf仓库，然后拉取子模块
+git clone https:&#x2F;&#x2F;github.com&#x2F;espressif&#x2F;esp-idf.git
+git submodule update --init --recursive
+#方案三：1.这是使用国内gitee托管克隆仓库
+git clone https:&#x2F;&#x2F;gitee.com&#x2F;EspressifSystems&#x2F;esp-idf.git
+#方案三：2.克隆国内gitee的工具仓库
+git clone https:&#x2F;&#x2F;gitee.com&#x2F;EspressifSystems&#x2F;esp-gitee-tools.git
+#方案三：3.复制esp-gitee-tools中的submodule-update.sh到esp-idf，然后执行submodule-update.sh
+.&#x2F;submodule-update.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>备注：</p>
 <ol>
 <li>这一步主要思想就是将就是将官方的esp-idf仓库完整克隆下来，在这个过程中不能报错，大家也可以查看该仓库中的.gitmodules中看看有哪些子模块。在这些模块在该项目的位置在GitHub中是以超链接的方式链接的。只克隆esp-idf到本地时，这些文件夹是空的，我们只要想办法将这些空文件夹中的内容填进去就可以，各种办法都可以。</li>
@@ -687,10 +687,10 @@
 <ul>
 <li>linux、macos</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#设置从乐鑫官方下载方式</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">IDF_GITHUB_ASSETS</span><span class="token operator">=</span><span class="token string">"dl.espressif.com/github_assets"</span>
-<span class="token comment">#执行安装脚本</span>
-./install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#设置从乐鑫官方下载方式
+export IDF_GITHUB_ASSETS&#x3D;&quot;dl.espressif.com&#x2F;github_assets&quot;
+#执行安装脚本
+.&#x2F;install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>备注：</p>
 <ol>
@@ -701,10 +701,10 @@
 <ul>
 <li>linux、macos</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#设置环境变量</span>
-<span class="token builtin class-name">.</span> .export.sh
-<span class="token comment">#如果当前不在esp-idf文件夹中</span>
-<span class="token builtin class-name">.</span> ~/esp/esp-idf/export.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#设置环境变量
+. .export.sh
+#如果当前不在esp-idf文件夹中
+. ~&#x2F;esp&#x2F;esp-idf&#x2F;export.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>备注：</p>
 <ol>
@@ -712,17 +712,17 @@
 <li>可以使用方法设置成打开终端自动设置环境变量，自行查找方案。</li>
 </ol>
 <h2 id="第五步：编译、烧录、验证"><a href="#第五步：编译、烧录、验证" class="headerlink" title="第五步：编译、烧录、验证"></a>第五步：编译、烧录、验证</h2><p>复制esp-idf/examples/get-started/下的hello_world工程或者其他工程到自己的工作目录进行编译、烧录、验证工作。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#到工作目录下</span>
-<span class="token builtin class-name">cd</span> ~/esp/hello_world
-<span class="token comment">#设置目标芯片</span>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#到工作目录下
+cd ~&#x2F;esp&#x2F;hello_world
+#设置目标芯片
 idf.py set-target esp32
-<span class="token comment">#打开配置界面</span>
+#打开配置界面
 idf.py menuconfig
-<span class="token comment">#编译</span>
+#编译
 idf.py build
-<span class="token comment">#烧录</span>
-idf.py -p PORT <span class="token punctuation">[</span>-b BAUD<span class="token punctuation">]</span> flash
-<span class="token comment">#打开串口监视</span>
+#烧录
+idf.py -p PORT [-b BAUD] flash
+#打开串口监视
 idf.py -p PORT monitor<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="第六步：在Vscode中安装ESP-IDF插件"><a href="#第六步：在Vscode中安装ESP-IDF插件" class="headerlink" title="第六步：在Vscode中安装ESP- IDF插件"></a>第六步：在Vscode中安装ESP- IDF插件</h2><p>这步没有什么要注意的，直接在商店安装即可</p>
@@ -803,12 +803,12 @@ idf.py -p PORT monitor<span aria-hidden="true" class="line-numbers-rows"><span><
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
-                                    <span class="chip bg-color">嵌入式</span>
-                                </a>
-                            
                                 <a href="/tags/esp32/">
                                     <span class="chip bg-color">esp32</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                                    <span class="chip bg-color">嵌入式</span>
                                 </a>
                             
                         </div>
@@ -982,6 +982,62 @@ idf.py -p PORT monitor<span aria-hidden="true" class="line-numbers-rows"><span><
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/project/luo-ji-diao-shi-qi-link-logic/">
+                    <div class="card-image">
+                        
+                        <img src="/image/logic/2.jpg" class="responsive-img" alt="逻辑调试器link-logic">
+                        
+                        <span class="card-title">逻辑调试器link-logic</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一个小巧、多功能调试STM32、ESP32等单片机的逻辑调试器。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/project/" class="post-category">
+                                    project
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/">
+                        <span class="chip bg-color">单片机</span>
+                    </a>
+                    
+                    <a href="/tags/link/">
+                        <span class="chip bg-color">link</span>
+                    </a>
+                    
+                    <a href="/tags/logic/">
+                        <span class="chip bg-color">logic</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/gui/lvgl-zai-pc-shang-mo-ni-zi-ji-de-dai-ma/">
                     <div class="card-image">
                         
@@ -998,9 +1054,9 @@ idf.py -p PORT monitor<span aria-hidden="true" class="line-numbers-rows"><span><
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1016,6 +1072,10 @@ idf.py -p PORT monitor<span aria-hidden="true" class="line-numbers-rows"><span><
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                        <span class="chip bg-color">嵌入式</span>
+                    </a>
+                    
                     <a href="/tags/lgvl/">
                         <span class="chip bg-color">lgvl</span>
                     </a>
@@ -1024,64 +1084,8 @@ idf.py -p PORT monitor<span aria-hidden="true" class="line-numbers-rows"><span><
                         <span class="chip bg-color">gui</span>
                     </a>
                     
-                    <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
-                        <span class="chip bg-color">嵌入式</span>
-                    </a>
-                    
                     <a href="/tags/vscode/">
                         <span class="chip bg-color">vscode</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/mcu/guo-nei-linux-he-macos-da-jian-esp32-de-kai-fa-huan-jing/">
-                    <div class="card-image">
-                        
-                        <img src="/image/esp32/anzhuang.jpg" class="responsive-img" alt="国内linux和macos搭建esp32的开发环境">
-                        
-                        <span class="card-title">国内linux和macos搭建esp32的开发环境</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            解决在国内搭建esp32的环境中容易失败的问题，亲测成功。
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-26
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/mcu/" class="post-category">
-                                    mcu
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
-                        <span class="chip bg-color">嵌入式</span>
-                    </a>
-                    
-                    <a href="/tags/esp32/">
-                        <span class="chip bg-color">esp32</span>
                     </a>
                     
                 </div>
