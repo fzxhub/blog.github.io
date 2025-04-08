@@ -38,15 +38,15 @@ menu:
         url: /tags
         icon: far fa-bookmark
 
-  关于:
-    url: /about
-    children:
-      - name: 关于博主
-        url: /about
-        icon: far fa-address-card
-      - name: 友情链接
-        url: /friends
-        icon: fas fa-link
+#  关于:
+#    url: /about
+#    children:
+#      - name: 关于博主
+#        url: /about
+#        icon: far fa-address-card
+#      - name: 友情链接
+#        url: /friends
+#        icon: fas fa-link
 
 # Website start time.
 # 站点运行开始时间.
@@ -145,6 +145,7 @@ socialLink:
   email: fzxhub@fzxmail.com
   zhihu: https://www.zhihu.com/people/fzxhub
   csdn: https://blog.csdn.net/fzxhub
+  bili: https://space.bilibili.com/438749069
   weixinmp: fzxhub
   weixinmpimg: https://cdn.jsdelivr.net/gh/fzxhub/image_bed@main/contact/weixin_public.jpg
 
