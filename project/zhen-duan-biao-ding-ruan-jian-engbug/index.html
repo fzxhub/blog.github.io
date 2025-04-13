@@ -1,0 +1,1394 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="诊断标定软件Engbug, fzxhub blog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>诊断标定软件Engbug | fzxhub blog</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.svg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">fzxhub blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+
+      
+      <span>分类</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories/website">
+          
+          <span>网站建设</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/project">
+          
+          <span>项目开发</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/gui">
+          
+          <span>界面设计</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/mcu">
+          
+          <span>微控制器</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/tools">
+          
+          <span>工具使用</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories/protocol">
+          
+          <span>协议详解</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+
+      
+      <span>归档</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="far fa-calendar-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>日历归档</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="far fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.svg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">fzxhub blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+				<i class="fas fa-fw fa-link"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fas fa-fw fa-link"></i>
+			
+			分类
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/categories/website " style="margin-left:75px">
+				  
+		          <span>网站建设</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/project " style="margin-left:75px">
+				  
+		          <span>项目开发</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/gui " style="margin-left:75px">
+				  
+		          <span>界面设计</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/mcu " style="margin-left:75px">
+				  
+		          <span>微控制器</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/tools " style="margin-left:75px">
+				  
+		          <span>工具使用</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories/protocol " style="margin-left:75px">
+				  
+		          <span>协议详解</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fas fa-fw fa-link"></i>
+			
+			归档
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa far fa-calendar-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>日历归档</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa far fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/fzxhub" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/fzxhub" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/image/engbug/try1.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">诊断标定软件Engbug</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Engbug/">
+                                <span class="chip bg-color">Engbug</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AF%8A%E6%96%AD/">
+                                <span class="chip bg-color">诊断</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A0%87%E5%AE%9A/">
+                                <span class="chip bg-color">标定</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%8D%87%E7%BA%A7/">
+                                <span class="chip bg-color">升级</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/project/" class="post-category">
+                                project
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2025-03-30
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2025-04-13
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    7 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Engbug"><a href="#Engbug" class="headerlink" title="Engbug"></a>Engbug</h1><p>Engbug是一款支持CAN的CAN报文接收发送、诊断、标定功能的软件。功能持续开发中。</p>
+<p>安装密码：fzxhub</p>
+<h2 id="计划中功能"><a href="#计划中功能" class="headerlink" title="计划中功能"></a>计划中功能</h2><ol>
+<li>支持更多CAN设备。</li>
+<li>增加报文接收支持字节折线图显示，或BDC做数据分析。</li>
+<li>增加标定观测折线图显示，支持数据分析； 增加DQA观测。</li>
+</ol>
+<h2 id="功能托盘"><a href="#功能托盘" class="headerlink" title="功能托盘"></a>功能托盘</h2><p>本程序是一个托盘程序，关闭单个功能模块窗口时，程序不退出。在电脑右下角托盘中右键Engbug图标来选择功能窗口。需要整个程序退出时使用托盘图标来退出</p>
+<img src="/image/engbug/try1.png" alt="托盘" style="zoom: 40%;" />
+
+<h2 id="设备连接"><a href="#设备连接" class="headerlink" title="设备连接"></a>设备连接</h2><p>运行Engbug后，可在托盘中选择Device来连接CAN设置，或者任意模块窗口右上角选择Device图标来连接CAN。当前支持4路CAN独立连接。选择参数后点击连接。</p>
+<img src="/image/engbug/dev1.png" alt="设备" style="zoom: 50%;" />
+
+<p>最下方是时间戳类型选择，<br>Vector硬件时间戳是连接时触发开始计时，因此多个通道独立连接会导致不同通道的起始时间不同步。Peak硬件时间戳不支持发送。因此只有接收帧有时间戳。软件时钟精确度不如硬件时间戳。<br>基于以上原因，建议：</p>
+<ol>
+<li>单通道使用VectorCAN时使用硬件时间戳。</li>
+<li>多通道使用时或者单通道使用PeakCAN时使用软件时间戳。</li>
+</ol>
+<h2 id="窗口简介"><a href="#窗口简介" class="headerlink" title="窗口简介"></a>窗口简介</h2><p>每个窗口左上角都有项目文件打开、保存、保存为的快捷键；右上角有设备管理、系统日志、模块设置快捷键。注意：每个模块窗口的设置只对当前模块有效。<br><img src="/image/engbug/dev1.png" alt="设备" style="zoom: 50%;" /></p>
+<h2 id="日志窗口"><a href="#日志窗口" class="headerlink" title="日志窗口"></a>日志窗口</h2><p>日志窗口主要显示相关关键操作打印，可用于排错等。该窗口支持将特定ID转为字符串显示在日志窗口，支持多帧，如下方法设置</p>
+<img src="/image/engbug/log1.png" alt="日志" style="zoom:50%;" />
+
+
+<h2 id="诊断窗口"><a href="#诊断窗口" class="headerlink" title="诊断窗口"></a>诊断窗口</h2><p><img src="/image/engbug/dia1.png" alt="诊断"></p>
+<p>诊断窗口暂时支持UDS协议解析与发送，点击设置可以设置发送接收ID、周期发送帧数据。</p>
+<p>诊断条目支持Run/Check两种，Run是发送诊断报文发送、执行任务；Check主要是检测接收的诊断报文。</p>
+<p>所有条目可单独执行流程或者全部流程链式执行。</p>
+<h3 id="诊断发送与分析"><a href="#诊断发送与分析" class="headerlink" title="诊断发送与分析"></a>诊断发送与分析</h3><p><img src="/image/engbug/dia2.png" alt="诊断"></p>
+<p>发送UDS报文增加条目即可，服务可下拉选择，如无需要的服务可手动输入服务的Hex，两项item和data可分别输入子服务和数据，自动追加在报文中。</p>
+<p>如图发送10 03、10 01UDS报文可如上操作。可选择每条使用功能ID或者物理ID。</p>
+<h3 id="诊断发送与校验"><a href="#诊断发送与校验" class="headerlink" title="诊断发送与校验"></a>诊断发送与校验</h3><p><img src="/image/engbug/dia3.png" alt="诊断"></p>
+<p>新增条目后在条目上右键选择切换即可在Run/Check切换，或者选中后使用左上角功能。</p>
+<p>如图解析：发送10 01，检查回复是否为50 01，如是将第3，4字节数据保存为UInt16的变量（小端），变量名字为time，后续可以直接使用time来获取数据。</p>
+<p>点击左上角Start按钮可以执行全部诊断项。</p>
+<h3 id="诊断特殊执行"><a href="#诊断特殊执行" class="headerlink" title="诊断特殊执行"></a>诊断特殊执行</h3><p><img src="/image/engbug/dia4.png" alt="诊断"></p>
+<h4 id="X1-Delay"><a href="#X1-Delay" class="headerlink" title="X1 Delay"></a>X1 Delay</h4><p>当遇到流程中需要等待时可以增加X1 Delay，单位ms，最小分辨率100ms。</p>
+<h4 id="X2-Print"><a href="#X2-Print" class="headerlink" title="X2 Print"></a>X2 Print</h4><p>用于打印数据，一般用于打印用户变量。调试变量是否符合预期。</p>
+<h4 id="X3-SaveUserVar"><a href="#X3-SaveUserVar" class="headerlink" title="X3 SaveUserVar"></a>X3 SaveUserVar</h4><p>用于存储数据到用户变量，第一Item输入变量名字，第二item根据选择类型输入数据，数据将按照该类型存储到内存，后使用UserVar即可取出数据。</p>
+<p>如果变量在使用之前没有存储过，一般拿出数据为0，不会报错。变量名字理论可以任意组合，但建议按照C命名变量规则。特殊字符不要使用。</p>
+<h4 id="X4-PlugDll"><a href="#X4-PlugDll" class="headerlink" title="X4 PlugDll"></a>X4 PlugDll</h4><p>用于载入dll执行，dll可以使用VS或者QT来编辑生成，提供示例。item只能是变量，第一item是Dll中函数的输入，可以多个变量；第二item是Dll中函数的输出，只能有一个输出。输出会存入变量中，变量类型由PlugDll中函数返回值决定。</p>
+<p>File项需要加入Dll文件，路径可以是相对路径和绝对路径。相对路径是相对项目文件的路径，移动文件时请保持相对性。</p>
+<p>可以用于解锁算法、CRC算法、用户交互等等个性算法实现。</p>
+<h4 id="X5-LoadeFile"><a href="#X5-LoadeFile" class="headerlink" title="X5 LoadeFile"></a>X5 LoadeFile</h4><p>用于载入文件，例如UDS升级时，将固件先用该指令载入PC内存，用变量存储文件，方便后续处理。</p>
+<p>只有第一item可用，以“，”给到三个变量，分别时文件内容、文件起始地址、文件长度。File项需要加入要处理的文件路径，路径可以是相对路径和绝对路径。相对路径是相对项目文件的路径，移动文件时请保持相对性。</p>
+<p>暂时只支持bin，由于bin文件无地址，因此文件起始地址获取始终为0。</p>
+<p>后续支持hex，s19文件可完整支持获取文件内容、文件起始地址、文件长度。</p>
+<h4 id="X6-3637-TransferFile"><a href="#X6-3637-TransferFile" class="headerlink" title="X6 [3637]TransferFile"></a>X6 [3637]TransferFile</h4><p>用于发送文件，是UDS指令36 37的集合，会自动将存储在内存变量中的文件全部根据规则发送出去</p>
+<p>第一item是文件变量，第二item是Block（块大小），就是单个36块发送有效数据大小。</p>
+<h4 id="X7-SwitchByteOrder"><a href="#X7-SwitchByteOrder" class="headerlink" title="X7 SwitchByteOrder"></a>X7 SwitchByteOrder</h4><p>用于切换变量的大小端，由于PC为小端模式，一般变量保存都是小端，以及收到保重存储的数据也是默认LSB（低字节先发），如果UDS发送序列需要MSB（高字节先发），可以先用X7来转换一下。后续可能优化存储变量时可选择大小端类型。</p>
+<h2 id="诊断流程窗口"><a href="#诊断流程窗口" class="headerlink" title="诊断流程窗口"></a>诊断流程窗口</h2><p>在诊断窗口下编辑的流程编辑调试完成后，可以保存成流程，后续可以使用诊断流程窗口直接执行，暂不支持诊断流程退回再修改。</p>
+<p><img src="/image/engbug/pro1.png" alt="流程"></p>
+<p>在诊断窗口下点击右上角图标即可输入Process的名称。</p>
+<p><img src="/image/engbug/pro2.png" alt="保存"></p>
+<p>UDS使用中常用的dll文件有SeedKey、CheckSum，用于27解锁、和CRC校验。</p>
+<p>UDS使用中常用的内容文件有Firmware、FlDriver，是固件和Flash驱动程序。</p>
+<p>因为该流程包含两个文件引用，会连续弹出两个消息框，选择文件类型，文件类型选择后，该文件路径将标签化，在流程执行窗口执行该流程前需要重新择文件，这样项目文件和引用文件可以分开保存和移动。</p>
+<p>如果在选择文件类型时选择忽略，如果引用文件是绝对路径，执行流程时需要确保绝对路径无误；如果是相对路径，再移动项目文件时需要保持引用文件和项目文件的相对性。</p>
+<p>选择文件类型时也可以输入新的标签（不属于SeedKey、CheckSum、Firmware、FlDriver），用于在流程窗口可以根据标签选择新的路径。</p>
+<p>导入流程成功后，如果需要保存到项目文件记得点击保存。</p>
+<p><img src="/image/engbug/pro3.png" alt="流程"></p>
+<p>来到流程窗口，process可看到所有流程。如果没有点击右边刷新。</p>
+<p>例如当前“fzx”流程是一个升级流程，其他文件如SeedKey等文件都选择了忽略，使用源流程中的文件引用，保证执行时可以找到文件即可，只需要选择固件即可执行流程。</p>
+<p><img src="/image/engbug/pro4.png" alt="流程"></p>
+<p>例如“123”流程需要选择SeedKey、CheckSum、FlDriver、Firmware的路径，除了需要这些，还需要一个MySeedKey标签的文件需要选择好后才能开启流程。</p>
+<p><img src="/image/engbug/pro5.png" alt="流程"></p>
+<p>Firmware可选择多个文件候补，打开周期执行流程时，自动轮询切换Firmware执行流程。</p>
+<h2 id="报文窗口"><a href="#报文窗口" class="headerlink" title="报文窗口"></a>报文窗口</h2><p>报文支持显示总线上的帧数据。</p>
+<ol>
+<li>支持单帧、折叠显示</li>
+<li>支持ID过滤，过滤器可通过、阻止、以及过滤器无效，默认过滤器无效。</li>
+<li>支持将报文保存为asc格式，方便其他工具来分析。</li>
+<li>发送支持手动、周期发送；暂时最小周期支持10ms发送，更小周期后续支持。</li>
+<li>支持在报文数据某个字节自增发送，可用于分析丢帧。</li>
+<li>支持错误帧显示</li>
+</ol>
+<p><img src="/image/engbug/can.png" alt="报文"></p>
+<h2 id="标定窗口"><a href="#标定窗口" class="headerlink" title="标定窗口"></a>标定窗口</h2><p>该功能需要被标定设备支持CCP协议。XCP后续支持。<br>暂时只支持轮询模式观测数据，DAQ模式后续支持。</p>
+<p><img src="/image/engbug/cal1.png" alt="标定"></p>
+<p>添加变量前请确保选择了elf文件。</p>
+<p><img src="/image/engbug/cal2.png" alt="标定"></p>
+<p>elf文件中无变量类型信息。添加好了变量后确保选择正确的数据类型Unsigned、Signed、Float，正确的数据类型才能正确显示数据。</p>
+<p>参数模块Data输入后需要点击Download才能发送给控制器。</p>
+<p><img src="/image/engbug/cal3.png" alt="标定"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">fzxhub</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.fzxhub.com/project/zhen-duan-biao-ding-ruan-jian-engbug/">https://blog.fzxhub.com/project/zhen-duan-biao-ding-ruan-jian-engbug/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">fzxhub</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Engbug/">
+                                    <span class="chip bg-color">Engbug</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AF%8A%E6%96%AD/">
+                                    <span class="chip bg-color">诊断</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A0%87%E5%AE%9A/">
+                                    <span class="chip bg-color">标定</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%8D%87%E7%BA%A7/">
+                                    <span class="chip bg-color">升级</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,wechat,weibo,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/project/zhen-duan-biao-ding-ruan-jian-engbug/">
+                    <div class="card-image">
+                        
+                        <img src="/image/engbug/try1.png" class="responsive-img" alt="诊断标定软件Engbug">
+                        
+                        <span class="card-title">诊断标定软件Engbug</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            ngbug是一款支持CAN的CAN报文接收发送、诊断、标定功能的软件。功能持续开发中。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/project/" class="post-category">
+                                    project
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Engbug/">
+                        <span class="chip bg-color">Engbug</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AF%8A%E6%96%AD/">
+                        <span class="chip bg-color">诊断</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%87%E5%AE%9A/">
+                        <span class="chip bg-color">标定</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8D%87%E7%BA%A7/">
+                        <span class="chip bg-color">升级</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/protocol/biao-ding-ji-chu-xcp-xie-yi-zhi-xie-yi-ceng-zhi-ling-xiang-jie/">
+                    <div class="card-image">
+                        
+                        <img src="/image/xcpcmd/CONNECT.png" class="responsive-img" alt="标定基础-XCP协议之协议层指令详解">
+                        
+                        <span class="card-title">标定基础-XCP协议之协议层指令详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文主要是XCP协议的指令详解，接XCP协议之通用层
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/protocol/" class="post-category">
+                                    protocol
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%A0%87%E5%AE%9A/">
+                        <span class="chip bg-color">标定</span>
+                    </a>
+                    
+                    <a href="/tags/XCP/">
+                        <span class="chip bg-color">XCP</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B1%BD%E8%BD%A6%E6%8E%A7%E5%88%B6%E5%99%A8/">
+                        <span class="chip bg-color">汽车控制器</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2025</span>
+            
+            <!-- <span id="year">2019</span> -->
+            <a href="/about" target="_blank">fzxhub</a>
+            <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20033471号</a>
+
+            
+
+            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a> -->
+            <!-- |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
+            <br>
+            
+            
+            
+            
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/fzxhub" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub: https://github.com/fzxhub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:fzxhub@fzxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我: fzxhub@fzxmail.com" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://cdn.jsdelivr.net/gh/fzxhub/image_bed@main/contact/weixin_public.jpg" class="tooltipped" target="_blank" data-tooltip="关注我的微信公众号: fzxhub" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
+    <a href="https://www.zhihu.com/people/fzxhub" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/fzxhub" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/fzxhub" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN: https://blog.csdn.net/fzxhub" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">C</i>
+    </a>
+
+
+
+    <a href="https://space.bilibili.com/438749069" class="tooltipped" target="_blank" data-tooltip="关注我的B站: https://space.bilibili.com/438749069" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">B</i>
+    </a>
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
