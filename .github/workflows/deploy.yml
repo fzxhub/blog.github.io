@@ -1,0 +1,38 @@
+name: Deploy Hexo Blog to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 当 main 分支有更新时触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 检出仓库代码
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 设置 Node.js 环境
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16  # Hexo 推荐 Node.js 版本
+
+    # 安装 Hexo 和依赖项
+    - name: Install dependencies
+      run: |
+        npm install
+
+    # 生成静态文件
+    - name: Generate static files
+      run: |
+        npx hexo generate
+
+    # 部署到 GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
